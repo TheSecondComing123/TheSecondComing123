@@ -1,4 +1,4 @@
 - 👋 Hi, I’m @TheSecondComing123
 - 👀 I’m interested in Python
-- 🌱 I’m currently learning Japt and C
-- 💞️ I’m looking to collaborate on BackBot
+- 🌱 I’m currently learning Vyxal and C++
+- 💞️ I’m looking to collaborate on Noxan
