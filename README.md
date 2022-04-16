@@ -1,1 +1,1 @@
-[![TheSecondComing123's GitHub stats](https://github-readme-stats.vercel.app/api?username=TheSecondComing123&show_icons=true&theme=synthwave&bg_color=45,a34,ffa9)](https://github.com/anuraghazra/github-readme-stats)
+[![TheSecondComing123's GitHub stats](https://github-readme-stats.vercel.app/api?username=TheSecondComing123&show_icons=true&theme=synthwave&bg_color=45,dff12,ffa9)](https://github.com/anuraghazra/github-readme-stats)
