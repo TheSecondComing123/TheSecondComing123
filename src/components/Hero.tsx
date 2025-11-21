@@ -1,12 +1,12 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="min-h-screen flex items-center justify-center bg-[#16181d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gray-900 dark:text-white">
-          Hi, I'm <span className="text-primary">Your Name</span>
+        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
+          Hi, I'm <span className="text-primary">Alan Bagel</span>
         </h1>
-        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8">
-          Full Stack Developer | Designer | Creator
+        <p className="text-xl md:text-2xl text-gray-300 mb-8">
+          Competitve Programmer | Website Developer | Coding Enthusiast
         </p>
         <div className="flex gap-4 justify-center">
           <a 

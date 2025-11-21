@@ -16,14 +16,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-[#1a1c23]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
           Get In Touch
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
               Name
             </label>
             <input
@@ -31,12 +31,12 @@ export default function Contact() {
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-[#1e2028] text-white"
               required
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
               Email
             </label>
             <input
@@ -44,12 +44,12 @@ export default function Contact() {
               id="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-[#1e2028] text-white"
               required
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">
+            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
               Message
             </label>
             <textarea
@@ -57,7 +57,7 @@ export default function Contact() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent dark:bg-gray-900 dark:border-gray-700 dark:text-white"
+              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-[#1e2028] text-white"
               required
             />
           </div>
