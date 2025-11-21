@@ -7,9 +7,9 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 bg-white dark:bg-gray-900">
+    <section id="skills" className="py-20 bg-[#16181d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
           Skills & Technologies
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -22,7 +22,7 @@ export default function Skills() {
                 {skillGroup.items.map((skill, i) => (
                   <li 
                     key={i} 
-                    className="text-gray-600 dark:text-gray-300 flex items-center"
+                    className="text-gray-300 flex items-center"
                   >
                     <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                     {skill}

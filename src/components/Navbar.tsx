@@ -7,7 +7,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 shadow-sm">
+    <nav className="fixed w-full bg-[#16181d]/95 backdrop-blur-sm z-50 shadow-sm border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold text-primary">
@@ -16,10 +16,10 @@ export default function Navbar() {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
-            <Link href="#about" className="hover:text-primary transition-colors">About</Link>
-            <Link href="#projects" className="hover:text-primary transition-colors">Projects</Link>
-            <Link href="#skills" className="hover:text-primary transition-colors">Skills</Link>
-            <Link href="#contact" className="hover:text-primary transition-colors">Contact</Link>
+            <Link href="#about" className="text-white hover:text-primary transition-colors">About</Link>
+            <Link href="#projects" className="text-white hover:text-primary transition-colors">Projects</Link>
+            <Link href="#skills" className="text-white hover:text-primary transition-colors">Skills</Link>
+            <Link href="#contact" className="text-white hover:text-primary transition-colors">Contact</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -40,10 +40,10 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden pb-4">
-            <Link href="#about" className="block py-2 hover:text-primary transition-colors">About</Link>
-            <Link href="#projects" className="block py-2 hover:text-primary transition-colors">Projects</Link>
-            <Link href="#skills" className="block py-2 hover:text-primary transition-colors">Skills</Link>
-            <Link href="#contact" className="block py-2 hover:text-primary transition-colors">Contact</Link>
+            <Link href="#about" className="block py-2 text-white hover:text-primary transition-colors">About</Link>
+            <Link href="#projects" className="block py-2 text-white hover:text-primary transition-colors">Projects</Link>
+            <Link href="#skills" className="block py-2 text-white hover:text-primary transition-colors">Skills</Link>
+            <Link href="#contact" className="block py-2 text-white hover:text-primary transition-colors">Contact</Link>
           </div>
         )}
       </div>
