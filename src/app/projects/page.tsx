@@ -25,7 +25,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="text-gray-300 text-lg mb-12 max-w-3xl leading-relaxed">
-            Over the years I'm made a lot of projects! I've shared a few for you below.
+            Over the years I&apos;ve made a lot of projects! I&apos;ve shared a few for you below.
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
