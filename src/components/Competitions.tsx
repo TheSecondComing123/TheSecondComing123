@@ -31,8 +31,8 @@ export default function Competitions() {
               className="bg-[#24262e] rounded-xl p-6 border border-gray-800"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20">
-                  <comp.icon className="text-primary" size={32} />
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-600/5 rounded-lg flex items-center justify-center border border-green-600/20">
+                  <comp.icon className="text-green-500" size={32} />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h3 className="text-xl font-bold text-white mb-1">

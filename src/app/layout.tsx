@@ -16,7 +16,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.className} bg-[#16181d]`} style={{ color: 'oklch(97.9% 0.021 166.113)' }}>{children}</body>
+      <body className={`${spaceGrotesk.className} bg-[#16181d]`} style={{ color: 'oklch(97.9% 0.021 166.113)' }}>
+        {children}
+      </body>
     </html>
   )
 }
