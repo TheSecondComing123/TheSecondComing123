@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import cache from '@/lib/cache'
 import { fetchGitHubContributions, ContributionDay } from '@/lib/github'
+import { CACHE_TTL_DAILY } from '@/constants/github'
 
 interface GitHubActivityApiResponse {
   source: 'graphql' | 'cache'
@@ -9,12 +10,21 @@ interface GitHubActivityApiResponse {
 }
 
 const GITHUB_ACTIVITY_CACHE_KEY = 'github_activity_data'
-const CACHE_TTL_DAILY = 24 * 60 * 60
 
 export async function GET(request: Request) {
   const url = new URL(request.url)
   const refreshCache = url.searchParams.get('refresh') === 'true'
-  const year = url.searchParams.get('year') || new Date().getFullYear().toString()
+  const yearParam = url.searchParams.get('year') || new Date().getFullYear().toString()
+
+  // Validate year parameter
+  const year = parseInt(yearParam, 10)
+  const currentYear = new Date().getFullYear()
+  if (isNaN(year) || year < 2008 || year > currentYear) {
+    return NextResponse.json(
+      { error: 'Invalid year parameter', details: `Year must be between 2008 and ${currentYear}` },
+      { status: 400 }
+    )
+  }
 
   const cacheKey = `${GITHUB_ACTIVITY_CACHE_KEY}_${year}`
 
@@ -44,8 +54,25 @@ export async function GET(request: Request) {
 
   } catch (error) {
     console.error('Error fetching GitHub contributions:', error)
+    const errorMessage = error instanceof Error ? error.message : String(error)
+
+    // Check for specific error types
+    if (errorMessage.includes('GITHUB_ACCESS_TOKEN')) {
+      return NextResponse.json(
+        { error: 'GitHub authentication failed', details: 'Missing or invalid GitHub access token' },
+        { status: 401 }
+      )
+    }
+
+    if (errorMessage.includes('rate limit')) {
+      return NextResponse.json(
+        { error: 'GitHub API rate limit exceeded', details: 'Please try again later' },
+        { status: 429 }
+      )
+    }
+
     return NextResponse.json(
-      { error: 'Failed to fetch GitHub activity', details: (error as Error).message },
+      { error: 'Failed to fetch GitHub activity', details: errorMessage },
       { status: 500 }
     )
   }

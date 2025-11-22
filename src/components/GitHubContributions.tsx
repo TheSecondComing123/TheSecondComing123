@@ -1,12 +1,8 @@
-'use client'
+'use client';
 
 import { useEffect, useState } from 'react'
-
-interface ContributionDay {
-  date: string
-  count: number
-  level: number
-}
+import { ContributionDay } from '@/lib/github'
+import { GITHUB_YEARS } from '@/constants/github'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
@@ -46,11 +42,15 @@ export default function GitHubContributions() {
   const [totalContributions, setTotalContributions] = useState(0)
   const [isLoading, setIsLoading] = useState(true)
   const [selectedYear, setSelectedYear] = useState('2025')
-  const years = ['2025', '2024', '2023', '2022', '2021']
+  const years = GITHUB_YEARS
 
   useEffect(() => {
+    const controller = new AbortController()
     setIsLoading(true)
-    fetch(`/api/github-activity?year=${selectedYear}`)
+
+    fetch(`/api/github-activity?year=${selectedYear}`, {
+      signal: controller.signal
+    })
       .then(res => res.json())
       .then(result => {
         setData(result.data)
@@ -58,9 +58,13 @@ export default function GitHubContributions() {
         setIsLoading(false)
       })
       .catch(error => {
-        console.error('Error loading contributions:', error)
-        setIsLoading(false)
+        if (error.name !== 'AbortError') {
+          console.error('Error loading contributions:', error)
+          setIsLoading(false)
+        }
       })
+
+    return () => controller.abort()
   }, [selectedYear])
 
   const monthLabels = data.length > 0 ? getMonthLabels(data) : []
@@ -84,6 +88,8 @@ export default function GitHubContributions() {
                       ? 'bg-green-600 text-white'
                       : 'bg-transparent text-gray-400 hover:text-white'
                   }`}
+                  aria-label={`View ${year} contributions`}
+                  aria-pressed={selectedYear === year ? 'true' : 'false'}
                 >
                   {year}
                 </button>
@@ -125,12 +131,13 @@ export default function GitHubContributions() {
                     </div>
 
                     {/* Contribution grid */}
-                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1">
+                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1" role="img" aria-label={`GitHub contribution calendar for ${selectedYear}`}>
                       {data.map((day) => (
                         <div
                           key={day.date}
                           className={`aspect-square rounded-sm ${getLevelColor(day.level)} border border-green-900/30`}
                           title={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
+                          aria-label={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                         />
                       ))}
                     </div>

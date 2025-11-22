@@ -2,6 +2,7 @@
 
 import { Trophy, Award } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE } from '@/constants/animations';
 
 const competitions = [
   {
@@ -23,28 +24,6 @@ const competitions = [
 ]
 
 export default function Competitions() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.21, 0.47, 0.32, 0.98] as const
-      }
-    }
-  };
-
   return (
     <section id="competitions" className="py-20 bg-[#16181d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,8 +33,8 @@ export default function Competitions() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{
-            duration: 0.7,
-            ease: [0.21, 0.47, 0.32, 0.98] as const
+            duration: ANIMATION_DURATION,
+            ease: EASE_CURVE
           }}
         >
           Competitive Programming
@@ -67,9 +46,9 @@ export default function Competitions() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {competitions.map((comp, index) => (
+          {competitions.map((comp) => (
             <motion.div
-              key={index}
+              key={comp.id}
               variants={cardVariants}
               className="bg-[#24262e] rounded-xl p-6 border border-gray-800"
             >
