@@ -192,8 +192,6 @@ export default function GitHubContributions() {
                       ? 'bg-green-600 text-white'
                       : 'bg-transparent text-gray-400 hover:text-white'
                   }`}
-                  aria-label={`View ${year} contributions`}
-                  aria-pressed={selectedYear === year ? 'true' : 'false'}
                 >
                   {year}
                 </button>
@@ -235,13 +233,12 @@ export default function GitHubContributions() {
                     </div>
 
                     {/* Contribution grid */}
-                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1" role="img" aria-label={`GitHub contribution calendar for ${selectedYear}`}>
+                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1">
                       {displayData.map((day, i) => (
                         <div
                           key={`${day.date}-${i}`}
                           className={`aspect-square rounded-sm ${getLevelColor(day.level)} border border-green-900/30 transition-colors duration-150`}
                           title={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
-                          aria-label={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                         />
                       ))}
                     </div>
