@@ -6,10 +6,10 @@ export default function Hero() {
           Hi, I'm <span className="text-green-600">Alan Bagel</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
-          Student, Competitve Programmer, Developer
+          Competitve Programmer, Developer
         </p>
         <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-10">
-          I'm a student, and I enjoy solving competitive programming problems and building websites in my free time,
+          I enjoy doing competitive programming and building websites and apps in my free time,
           like this one!
         </p>
       </div>

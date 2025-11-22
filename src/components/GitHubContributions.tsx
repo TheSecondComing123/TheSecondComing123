@@ -10,30 +10,34 @@ interface ContributionDay {
 
 const getLevelColor = (level: number): string => {
   switch (level) {
-    case 0: return 'bg-[#1a1d24]'
+    case 0: return 'bg-green-950/30'
     case 1: return 'bg-green-800'
     case 2: return 'bg-green-700'
     case 3: return 'bg-green-600'
     case 4: return 'bg-green-500'
-    default: return 'bg-[#1a1d24]'
+    default: return 'bg-green-950/30'
   }
 }
 
 const getMonthLabels = (data: ContributionDay[]) => {
   const months: { label: string; offset: number }[] = []
   let currentMonth = ''
-  
+  let lastOffset = -1
+  const MIN_COLUMN_SPACING = 4
+
   data.forEach((day, index) => {
     const date = new Date(day.date)
     const month = date.toLocaleDateString('en-US', { month: 'short' })
     const col = Math.floor(index / 7)
-    
-    if (month !== currentMonth) {
+
+    // Only add month if it's different AND far enough from the last label
+    if (month !== currentMonth && (lastOffset === -1 || col - lastOffset >= MIN_COLUMN_SPACING)) {
       currentMonth = month
+      lastOffset = col
       months.push({ label: month, offset: col })
     }
   })
-  
+
   return months
 }
 
@@ -60,6 +64,7 @@ export default function GitHubContributions() {
   }, [selectedYear])
 
   const monthLabels = data.length > 0 ? getMonthLabels(data) : []
+  const totalWeeks = data.length > 0 ? Math.ceil(data.length / 7) : 0
 
   return (
     <section id="github" className="py-12">
@@ -91,42 +96,40 @@ export default function GitHubContributions() {
           ) : data.length > 0 ? (
             <>
               <div className="mb-4 overflow-x-auto">
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   {/* Day labels */}
-                  <div className="flex flex-col gap-[2px] text-xs text-gray-400 pt-5">
-                    <div className="h-[10px] flex items-center">Mon</div>
-                    <div className="h-[10px]"></div>
-                    <div className="h-[10px] flex items-center">Wed</div>
-                    <div className="h-[10px]"></div>
-                    <div className="h-[10px] flex items-center">Fri</div>
-                    <div className="h-[10px]"></div>
-                    <div className="h-[10px]"></div>
+                  <div className="grid grid-rows-7 gap-1 text-xs text-gray-400 pt-5 auto-rows-fr">
+                    <div className="flex items-center">Mon</div>
+                    <div></div>
+                    <div className="flex items-center">Wed</div>
+                    <div></div>
+                    <div className="flex items-center">Fri</div>
+                    <div></div>
+                    <div></div>
                   </div>
-                  
+
                   <div className="flex-1 min-w-0">
                     {/* Month labels */}
-                    <div className="flex text-xs text-gray-400 mb-1">
+                    <div className="relative text-xs text-gray-400 mb-1 h-4">
                       {monthLabels.map((month, index) => (
                         <div
                           key={index}
-                          className="relative"
-                          style={{ 
-                            width: `${index < monthLabels.length - 1 
-                              ? (monthLabels[index + 1].offset - month.offset) * 12 
-                              : ((data.length / 7) - month.offset) * 12}px`
+                          className="absolute"
+                          style={{
+                            left: `${(month.offset / totalWeeks) * 100}%`
                           }}
                         >
                           {month.label}
                         </div>
                       ))}
                     </div>
-                    
+
                     {/* Contribution grid */}
-                    <div className="grid grid-flow-col auto-cols-fr grid-rows-7 gap-[2px]">
+                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1">
                       {data.map((day) => (
                         <div
                           key={day.date}
-                          className={`aspect-square rounded-sm ${getLevelColor(day.level)}`}
+                          className={`aspect-square rounded-sm ${getLevelColor(day.level)} border border-green-900/30`}
                           title={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                         />
                       ))}
@@ -143,7 +146,7 @@ export default function GitHubContributions() {
                     {[0, 1, 2, 3, 4].map((level) => (
                       <div
                         key={level}
-                        className={`w-[10px] h-[10px] rounded-sm ${getLevelColor(level)}`}
+                        className={`w-[12px] h-[12px] rounded-sm ${getLevelColor(level)} border border-green-900/30`}
                       />
                     ))}
                   </div>
