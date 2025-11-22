@@ -15,8 +15,8 @@
     }
 
     body {
-        @apply bg-[#16181d] text-white;
-        color: white;
+        @apply bg-[#16181d];
+        color: oklch(97.9% 0.021 166.113);
         background-color: #16181d;
     }
 
