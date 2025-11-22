@@ -1,6 +1,10 @@
+'use client';
+
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AnimatedSection from '@/components/AnimatedSection'
 import { Bot } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const projects = [
 //   {
@@ -16,22 +20,68 @@ const projects = [
 ]
 
 export default function ProjectsPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.21, 0.47, 0.32, 0.98] as const
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#16181d]">
       <Navbar />
       <main className="pt-24 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl font-bold text-white mb-6">
+          <motion.h1
+            className="text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.2,
+              ease: [0.21, 0.47, 0.32, 0.98] as const
+            }}
+          >
             Projects
-          </h1>
-          <p className="text-gray-300 text-lg mb-12 max-w-3xl leading-relaxed">
+          </motion.h1>
+          <motion.p
+            className="text-gray-300 text-lg mb-12 max-w-3xl leading-relaxed"
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.7,
+              delay: 0.35,
+              ease: [0.21, 0.47, 0.32, 0.98] as const
+            }}
+          >
             Over the years I&apos;ve made a lot of projects! I&apos;ve shared a few for you below.
-          </p>
+          </motion.p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             {projects.map((project, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={cardVariants}
                 className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
               >
                 <div className="flex items-start gap-4">
@@ -47,12 +97,14 @@ export default function ProjectsPage() {
                     </p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </main>
-      <Footer />
+      <AnimatedSection delay={0.3}>
+        <Footer />
+      </AnimatedSection>
     </div>
   )
 }
