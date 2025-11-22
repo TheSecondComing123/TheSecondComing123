@@ -3,7 +3,7 @@ export default function Hero() {
     <section className="pt-32 pb-10 flex items-center justify-center bg-[#16181d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-          Hi, I'm <span className="text-primary">Alan Bagel</span>
+          Hi, I'm <span className="text-green-600">Alan Bagel</span>
         </h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
           Student, Competitve Programmer, Developer
