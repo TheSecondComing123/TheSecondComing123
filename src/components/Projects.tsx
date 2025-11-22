@@ -1,6 +1,6 @@
 'use client';
 
-import { Bot } from 'lucide-react'
+import { Bot, Gamepad2 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE, INITIAL_DELAY } from '@/constants/animations'
 
@@ -17,6 +17,13 @@ const projects = [
     description: 'Used Pybricks to create an object-oriented codebase for my team\'s FLL Robot, achieving state recognition.',
     icon: Bot,
   },
+
+  {
+    id: '2121',
+    title: '2121',
+    description: 'A game I made when I was 7 for a national Chinese 1-month-long game jam, winning 2nd place among thousands of participants.',
+    icon: Gamepad2
+  }
 ]
 
 export default function Projects() {

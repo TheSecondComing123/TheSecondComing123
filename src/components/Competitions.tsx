@@ -1,6 +1,6 @@
 'use client';
 
-import { Trophy, Award, Medal } from 'lucide-react';
+import { Trophy, Award, Medal, CircleStar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE } from '@/constants/animations';
 import { title } from 'process';
@@ -34,7 +34,7 @@ const competitions = [
     id: 'calico-2025',
     title: 'CalICO',
     rank: '135th place',
-    icon: Trophy,
+    icon: CircleStar,
     period: '2025',
     description: 'Ranked 135th in the California Informatics Olympiad, competing among hundreds of participants in challenging algorithmic contests.'
   }
