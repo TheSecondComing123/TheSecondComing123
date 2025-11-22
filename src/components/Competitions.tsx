@@ -1,15 +1,16 @@
 'use client';
 
-import { Trophy, Award } from 'lucide-react';
+import { Trophy, Award, Medal } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE } from '@/constants/animations';
+import { title } from 'process';
 
 const competitions = [
   {
     id: 'acsl-2024',
     title: 'ACSL',
     rank: 'National Silver',
-    icon: Trophy,
+    icon: Award,
     period: '2024',
     description: 'Achieved National Silver recognition in the American Computer Science League, competing against top high school students across the country in algorithmic problem-solving.'
   },
@@ -17,9 +18,25 @@ const competitions = [
     id: 'usaco-2024',
     title: 'USACO',
     rank: 'Silver Division',
-    icon: Award,
+    icon: Trophy,
     period: '2024',
     description: 'Advanced to Silver Division in the USA Computing Olympiad, demonstrating proficiency in algorithms, data structures, and competitive programming techniques.'
+  },
+  {
+    id: 'tjioi-2024',
+    title: "TJIOI Beginner Division",
+    rank: '1st place solo',
+    icon: Medal,
+    period: '2024',
+    description: 'Secured 1st place in the Beginner Division of the Thomas Jefferson Invitational Olympiad in Informatics, showcasing strong problem-solving skills and coding ability.'
+  },
+  {
+    id: 'calico-2025',
+    title: 'CalICO',
+    rank: '135th place',
+    icon: Trophy,
+    period: '2025',
+    description: 'Ranked 135th in the California Informatics Olympiad, competing among hundreds of participants in challenging algorithmic contests.'
   }
 ]
 

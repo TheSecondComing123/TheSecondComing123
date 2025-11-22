@@ -8,8 +8,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Alan Bagel - Competitive Programmer & Developer',
-  description: 'Portfolio of Alan Bagel, ACSL National Silver and USACO Silver Division competitive programmer. Explore my projects and GitHub contributions.',
+  title: 'Alan Bagel',
+  description: 'Portfolio of Alan Bagel',
 }
 
 export default function RootLayout({

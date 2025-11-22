@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "type-check": "tsc --noEmit",
+    "check": "npm run type-check && npm run lint",
+    "setup": "npm install && npm run check && npm run dev"
   },
   "dependencies": {
     "@octokit/graphql": "^9.0.3",
@@ -24,8 +27,8 @@
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.6",
     "@types/react-dom": "^19.2.3",
-    "eslint": "^9.39.1",
-    "eslint-config-next": "^16.0.3",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.6",
     "postcss": "^8.4.31",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.3.2"
