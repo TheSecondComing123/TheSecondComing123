@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'My Portfolio',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} bg-[#16181d] text-white`}>{children}</body>
+      <body className={`${spaceGrotesk.className} bg-[#16181d]`} style={{ color: 'oklch(97.9% 0.021 166.113)' }}>{children}</body>
     </html>
   )
 }
