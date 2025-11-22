@@ -71,7 +71,7 @@ export default function GitHubContributions() {
   const totalWeeks = data.length > 0 ? Math.ceil(data.length / 7) : 0
 
   return (
-    <section id="github" className="pt-4 pb-12">
+    <section id="github" className="pt-4 pb-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
           <div className="flex items-center justify-between mb-4">
