@@ -1,7 +1,11 @@
-import { Trophy, Award } from 'lucide-react'
+'use client';
+
+import { Trophy, Award } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const competitions = [
   {
+    id: 'acsl-2024',
     title: 'ACSL',
     rank: 'National Silver',
     icon: Trophy,
@@ -9,6 +13,7 @@ const competitions = [
     description: 'Achieved National Silver recognition in the American Computer Science League, competing against top high school students across the country in algorithmic problem-solving.'
   },
   {
+    id: 'usaco-2024',
     title: 'USACO',
     rank: 'Silver Division',
     icon: Award,
@@ -18,16 +23,54 @@ const competitions = [
 ]
 
 export default function Competitions() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.21, 0.47, 0.32, 0.98] as const
+      }
+    }
+  };
+
   return (
     <section id="competitions" className="py-20 bg-[#16181d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold mb-12 text-white">
+        <motion.h2
+          className="text-4xl font-bold mb-12 text-white"
+          initial={{ opacity: 0, y: 60 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{
+            duration: 0.7,
+            ease: [0.21, 0.47, 0.32, 0.98] as const
+          }}
+        >
           Competitive Programming
-        </h2>
-        <div className="grid grid-cols-2 gap-6">
+        </motion.h2>
+        <motion.div
+          className="grid grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {competitions.map((comp, index) => (
-            <div 
-              key={index} 
+            <motion.div
+              key={index}
+              variants={cardVariants}
               className="bg-[#24262e] rounded-xl p-6 border border-gray-800"
             >
               <div className="flex items-start gap-4">
@@ -49,9 +92,9 @@ export default function Competitions() {
                   </p>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )
