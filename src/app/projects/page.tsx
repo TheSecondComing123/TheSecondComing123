@@ -5,14 +5,17 @@ import Footer from '@/components/Footer'
 import AnimatedSection from '@/components/AnimatedSection'
 import { Bot } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE, INITIAL_DELAY } from '@/constants/animations'
 
 const projects = [
 //   {
+//     id: '',
 //     title: '',
 //     description: '',
 //     icon: '',
 //   },
   {
+    id: 'fll-robotics-2024',
     title: 'FLL Robotics Code',
     description: 'Used Pybricks to create an object-oriented codebase for my team\'s FLL Robot, achieving state recognition.',
     icon: Bot,
@@ -20,28 +23,6 @@ const projects = [
 ]
 
 export default function ProjectsPage() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.21, 0.47, 0.32, 0.98] as const
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen bg-[#16181d]">
       <Navbar />
@@ -52,9 +33,9 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.7,
-              delay: 0.2,
-              ease: [0.21, 0.47, 0.32, 0.98] as const
+              duration: ANIMATION_DURATION,
+              delay: INITIAL_DELAY,
+              ease: EASE_CURVE
             }}
           >
             Projects
@@ -64,9 +45,9 @@ export default function ProjectsPage() {
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.7,
+              duration: ANIMATION_DURATION,
               delay: 0.35,
-              ease: [0.21, 0.47, 0.32, 0.98] as const
+              ease: EASE_CURVE
             }}
           >
             Over the years I&apos;ve made a lot of projects! I&apos;ve shared a few for you below.
@@ -78,9 +59,9 @@ export default function ProjectsPage() {
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <motion.div
-                key={index}
+                key={project.id}
                 variants={cardVariants}
                 className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
               >

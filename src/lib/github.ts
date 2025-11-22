@@ -1,4 +1,5 @@
 import { graphql } from "@octokit/graphql"
+import { GITHUB_USERNAME } from '@/constants/github'
 
 interface GitHubGraphQLContributionResponse {
   user: {
@@ -23,7 +24,6 @@ export interface ContributionDay {
   level: number
 }
 
-const GITHUB_USERNAME = 'TheSecondComing123'
 const GITHUB_API_TOKEN = process.env.GITHUB_ACCESS_TOKEN
 
 export async function fetchGitHubContributions(fromDate: string, toDate: string): Promise<{ contributions: ContributionDay[], totalContributions: number }> {
