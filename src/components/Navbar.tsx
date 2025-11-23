@@ -10,6 +10,7 @@ export default function Navbar() {
           </Link>
           <div className="flex space-x-8">
             <Link href="/" className="text-white" aria-label="Navigate to home page">Home</Link>
+            <Link href="/about" className="text-white" aria-label="Navigate to about page">About</Link>
             <Link href="/projects" className="text-white" aria-label="Navigate to projects page">Projects</Link>
           </div>
         </div>
