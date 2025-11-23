@@ -1,30 +1,9 @@
 'use client';
 
-import { Bot, Gamepad2 } from 'lucide-react'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE, INITIAL_DELAY } from '@/constants/animations'
-
-const projects = [
-//   {
-//     id: '',
-//     title: '',
-//     description: '',
-//     icon: '',
-//   },
-  {
-    id: 'fll-robotics-2024',
-    title: 'FLL Robotics Code',
-    description: 'Used Pybricks to create an object-oriented codebase for my team\'s FLL Robot, achieving state recognition.',
-    icon: Bot,
-  },
-
-  {
-    id: '2121',
-    title: '2121',
-    description: 'A game I made when I was 7 for a national Chinese 1-month-long game jam, winning 2nd place among thousands of participants.',
-    icon: Gamepad2
-  }
-]
+import { projectsData } from '@/constants/projects'
 
 export default function Projects() {
   return (
@@ -60,26 +39,27 @@ export default function Projects() {
         initial="hidden"
         animate="visible"
       >
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            variants={cardVariants}
-            className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
-          >
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20">
-                <project.icon className="text-primary" size={28} />
+        {projectsData.map((project) => (
+          <Link key={project.id} href={`/projects/${project.id}`}>
+            <motion.div
+              variants={cardVariants}
+              className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20">
+                  <project.icon className="text-primary" size={28} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </Link>
         ))}
       </motion.div>
     </div>
