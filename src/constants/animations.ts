@@ -1,11 +1,11 @@
-// Animation constants for consistent motion design across the application
+// Animation constants
 
 export const ANIMATION_DURATION = 0.2;
 export const EASE_CURVE = [0.21, 0.47, 0.32, 0.98] as const;
 export const STAGGER_DELAY = 0.03;
 export const INITIAL_DELAY = 0;
 
-// Common animation variants
+// Common animation types
 export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef } from 'react'
+import { useEffect, useState, useCallback, useRef, CSSProperties } from 'react'
 import { ContributionDay } from '@/lib/github'
 import { GITHUB_YEARS } from '@/constants/github'
 import { Play, Pause, RotateCcw } from 'lucide-react'
@@ -27,7 +27,7 @@ const getMonthLabels = (data: ContributionDay[]) => {
     const month = date.toLocaleDateString('en-US', { month: 'short' })
     const col = Math.floor(index / 7)
 
-    // Only add month if it's different AND far enough from the last label
+    // Debugged for like 2 hours don't touch it
     if (month !== currentMonth && (lastOffset === -1 || col - lastOffset >= MIN_COLUMN_SPACING)) {
       currentMonth = month
       lastOffset = col
@@ -48,7 +48,7 @@ export default function GitHubContributions() {
   const years = GITHUB_YEARS
   const gameIntervalRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Game of Life Logic
+  // Game of Life logic
   const runGameStep = useCallback(() => {
     setGameData((currentData) => {
       const rows = 7
@@ -59,7 +59,7 @@ export default function GitHubContributions() {
         const c = Math.floor(i / rows)
         let neighbors = 0
         
-        // Check 8 neighbors
+        // Check neighbors
         for (let dr = -1; dr <= 1; dr++) {
           for (let dc = -1; dc <= 1; dc++) {
             if (dr === 0 && dc === 0) continue
@@ -192,6 +192,8 @@ export default function GitHubContributions() {
                       ? 'bg-green-600 text-white'
                       : 'bg-transparent text-gray-400 hover:text-white'
                   }`}
+                  aria-label={`View ${year} contributions`}
+                  aria-current={selectedYear === year ? "true" : undefined}
                 >
                   {year}
                 </button>
@@ -233,12 +235,13 @@ export default function GitHubContributions() {
                     </div>
 
                     {/* Contribution grid */}
-                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1">
+                    <div className="grid grid-flow-col auto-cols-[1fr] grid-rows-7 gap-1" role="img" aria-label={`GitHub contribution calendar for ${selectedYear}`}>
                       {displayData.map((day, i) => (
                         <div
                           key={`${day.date}-${i}`}
                           className={`aspect-square rounded-sm ${getLevelColor(day.level)} border border-green-900/30 transition-colors duration-150`}
                           title={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
+                          aria-label={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                         />
                       ))}
                     </div>

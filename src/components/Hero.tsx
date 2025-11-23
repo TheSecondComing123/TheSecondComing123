@@ -22,7 +22,7 @@ export default function Hero() {
           className="text-xl md:text-2xl text-gray-300 mb-8"
           variants={itemVariants}
         >
-          Competitive Programmer, Developer
+          Competitive Programmer • Developer
         </motion.p>
         <motion.p
           className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-6"
