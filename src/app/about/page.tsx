@@ -3,7 +3,6 @@
 import Navbar from '@/components/Navbar';
 import About from '@/components/About';
 import Footer from '@/components/Footer';
-import AnimatedSection from '@/components/AnimatedSection';
 
 export default function AboutPage() {
   return (
@@ -12,9 +11,7 @@ export default function AboutPage() {
       <main className="pt-24 pb-20">
         <About />
       </main>
-      <AnimatedSection delay={0.3}>
-        <Footer />
-      </AnimatedSection>
+      <Footer />
     </div>
   );
 }

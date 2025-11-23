@@ -6,66 +6,66 @@ import { containerVariants, itemVariants } from '@/constants/animations';
 
 const skills = [
   {
-    id: 'skill-1',
-    name: 'Skill Name',
-    description: 'Description of your experience with this skill',
+    id: 'python',
+    name: 'Python',
+    description: 'Competitive programming, robotics, automation',
     icon: Code,
   },
   {
-    id: 'skill-2',
-    name: 'Technology',
-    description: 'What you use this technology for',
+    id: 'code-golfing',
+    name: 'Code Golfing',
+    description: 'Code Golf Stack Exchange, assisting in development of Vyxal golfing language',
     icon: Terminal,
   },
   {
-    id: 'skill-3',
-    name: 'Programming Language',
-    description: 'Your proficiency and use cases',
+    id: 'cpp',
+    name: 'C++',
+    description: 'Competitive programming, algorithms, data structures',
     icon: Cpu,
   },
   {
-    id: 'skill-4',
-    name: 'Framework',
-    description: 'Projects built with this framework',
+    id: 'web',
+    name: 'Web Development',
+    description: 'Next.js, React, Tailwind CSS, modern frameworks',
     icon: Globe,
   },
   {
-    id: 'skill-5',
-    name: 'Tool or Platform',
-    description: 'How you leverage this tool',
+    id: 'game-dev',
+    name: 'Game Development',
+    description: 'GDScript, Godot Engine, hosted on Wechat Mini Games',
     icon: Gamepad2,
   },
   {
-    id: 'skill-6',
-    name: 'Specialty Area',
-    description: 'Your expertise in this domain',
+    id: 'robotics',
+    name: 'Robotics',
+    description: 'Pybricks, FLL, object-oriented design',
     icon: Bot,
   },
 ];
 
 const interests = [
   {
-    id: 'interest-1',
-    title: 'Interest or Hobby',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Describe what you enjoy about this activity and how it relates to your work or personal growth.',
+    id: 'competitive-programming',
+    title: 'Competitive Programming',
+    description: 'I love solving algorithmic challenges and competing in contests like USACO and Codeforces. There\'s something satisfying about finding elegant solutions to complex problems.',
     icon: Trophy,
   },
   {
-    id: 'interest-2',
-    title: 'Another Interest',
-    description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Share your passion for this interest and what it brings to your life.',
+    id: 'web-development',
+    title: 'Web Development',
+    description: 'Building interactive websites and applications is my passion. I enjoy creating smooth user experiences with modern frameworks and animations.',
     icon: Rocket,
   },
   {
-    id: 'interest-3',
-    title: 'Hobby or Activity',
-    description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris. Explain why this hobby is meaningful to you.',
+    id: 'game-creation',
+    title: 'Game Creation',
+    description: 'I\'ve been making games since I was young, including my 2121 game that won 2nd place in a national game jam. I love bringing ideas to life through code.',
     icon: Gamepad2,
   },
   {
-    id: 'interest-4',
-    title: 'Personal Passion',
-    description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore. Detail how this passion influences your approach to challenges.',
+    id: 'creative-coding',
+    title: 'Creative Coding',
+    description: 'From interactive GitHub contribution visualizations to experimental projects, I enjoy blending creativity with programming.',
     icon: Sparkles,
   },
 ];
@@ -90,13 +90,13 @@ export default function About() {
           transition={{ duration: 0.7, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <p>
-            Hi! I'm <span className="text-primary font-semibold">[Your Name]</span>, a [your role/title] who loves [what you're passionate about].
+            Hi! I&apos;m <span className="text-primary font-semibold">Alan Bagel</span>, a competitive programmer and full-stack developer who loves building things with code.
           </p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Write a few sentences about your background, what drives you, and what makes you unique in your field. This is your chance to tell your story.
+            I enjoy tackling algorithmic challenges in competitive programming contests and creating interactive web experiences. Whether it&apos;s optimizing a graph traversal algorithm or designing a smooth user interface, I&apos;m passionate about writing clean, efficient code.
           </p>
           <p>
-            Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Share what you do when you're not working, your learning philosophy, or what excites you about the future.
+            When I&apos;m not coding, you&apos;ll find me exploring new technologies, working on robotics projects, or creating games. I believe in learning by building, and I&apos;m always working on something new.
           </p>
         </motion.div>
       </section>
@@ -151,7 +151,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
-          Achievements & Milestones
+          Competitive Programming Journey
         </motion.h2>
         <motion.p
           className="text-lg text-gray-300 mb-12 max-w-3xl"
@@ -160,86 +160,140 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
-          Here are some placeholder achievements. Replace these with your own accomplishments, awards, certifications, or significant milestones:
+          Competitive programming has been a huge part of my development journey. I&apos;ve competed in various contests and earned recognition at the national level:
         </motion.p>
         <motion.div
-          className="grid md:grid-cols-2 gap-6"
+          className="relative max-w-4xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
         >
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
-                <Trophy className="text-primary" size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-1">Achievement Title</h3>
-                <p className="text-primary text-sm font-medium mb-2">Year</p>
-                <p className="text-gray-400 text-sm">
-                  Description of this achievement and what it demonstrates about your skills or dedication.
-                </p>
-              </div>
-            </div>
-          </motion.div>
+          {/* Timeline line - hidden on mobile */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2 shadow-[0_0_15px_rgba(74,222,128,0.3)]" />
 
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
-                <Code className="text-primary" size={24} />
+          {/* Timeline items */}
+          <div className="space-y-8 md:space-y-12">
+            {/* Item 1 - ACSL (Left) */}
+            <motion.div
+              variants={itemVariants}
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+            >
+              {/* Left content */}
+              <div className="md:text-right">
+                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 inline-block w-full">
+                  <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                      <Trophy className="text-primary" size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-white mb-1">ACSL National Silver</h3>
+                      <p className="text-primary text-sm font-medium mb-2">2024</p>
+                      <p className="text-gray-400 text-sm">
+                        Earned National Silver ranking in the American Computer Science League, competing against top high school students across the country.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-white mb-1">Certification or Award</h3>
-                <p className="text-primary text-sm font-medium mb-2">Year</p>
-                <p className="text-gray-400 text-sm">
-                  Details about this certification, award, or recognition and its significance.
-                </p>
+              {/* Timeline dot */}
+              <div className="hidden md:flex justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
-            </div>
-          </motion.div>
+              {/* Right spacer */}
+              <div className="hidden md:block" />
+            </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
-                <Sparkles className="text-primary" size={24} />
+            {/* Item 2 - USACO (Right) */}
+            <motion.div
+              variants={itemVariants}
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+            >
+              {/* Left spacer */}
+              <div className="hidden md:block" />
+              {/* Timeline dot */}
+              <div className="hidden md:flex justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
+              {/* Right content */}
               <div>
-                <h3 className="text-xl font-semibold text-white mb-1">Competition Result</h3>
-                <p className="text-primary text-sm font-medium mb-2">Year - Category</p>
-                <p className="text-gray-400 text-sm">
-                  Information about a competition you participated in and what you achieved or learned.
-                </p>
+                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                      <Code className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-1">USACO Silver Division</h3>
+                      <p className="text-primary text-sm font-medium mb-2">2024</p>
+                      <p className="text-gray-400 text-sm">
+                        Achieved Silver Division status in the USA Computing Olympiad through strong algorithmic problem-solving and efficient code implementation.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50"
-          >
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
-                <Cpu className="text-primary" size={24} />
+            {/* Item 3 - TJIOI (Left) */}
+            <motion.div
+              variants={itemVariants}
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+            >
+              {/* Left content */}
+              <div className="md:text-right">
+                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 inline-block w-full">
+                  <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                      <Sparkles className="text-primary" size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-xl font-semibold text-white mb-1">TJIOI 1st Place Solo</h3>
+                      <p className="text-primary text-sm font-medium mb-2">2024 - Beginner Division</p>
+                      <p className="text-gray-400 text-sm">
+                        Won first place competing solo in the Thomas Jefferson Invitational Olympiad in Informatics, demonstrating strong individual problem-solving skills.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
+              {/* Timeline dot */}
+              <div className="hidden md:flex justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+              </div>
+              {/* Right spacer */}
+              <div className="hidden md:block" />
+            </motion.div>
+
+            {/* Item 4 - CalICO (Right) */}
+            <motion.div
+              variants={itemVariants}
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+            >
+              {/* Left spacer */}
+              <div className="hidden md:block" />
+              {/* Timeline dot */}
+              <div className="hidden md:flex justify-center">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+              </div>
+              {/* Right content */}
               <div>
-                <h3 className="text-xl font-semibold text-white mb-1">Notable Milestone</h3>
-                <p className="text-primary text-sm font-medium mb-2">Year</p>
-                <p className="text-gray-400 text-sm">
-                  A significant milestone in your journey, such as a project launch or learning achievement.
-                </p>
+                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                      <Cpu className="text-primary" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white mb-1">CalICO 135th Place</h3>
+                      <p className="text-primary text-sm font-medium mb-2">2025</p>
+                      <p className="text-gray-400 text-sm">
+                        Competed in the California Informatics Olympiad among hundreds of talented participants from across the state.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
       </section>
 
@@ -294,27 +348,27 @@ export default function About() {
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Want to see more?
+            Want to see what I&apos;ve built?
           </h2>
           <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-            Explore my work, check out my portfolio, or connect with me on your preferred platform.
+            Check out my projects to see some of the things I&apos;ve created, or visit my GitHub to explore my code.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/projects"
               className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-              aria-label="View projects"
+              aria-label="View my projects"
             >
               View Projects
             </a>
             <a
-              href="#"
+              href="https://github.com/TheSecondComing123"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
-              aria-label="Visit profile"
+              aria-label="Visit my GitHub profile"
             >
-              Visit Profile
+              Visit GitHub
             </a>
           </div>
         </motion.div>
