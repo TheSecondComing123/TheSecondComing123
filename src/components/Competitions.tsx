@@ -3,7 +3,6 @@
 import { Trophy, Award, Medal, CircleStar } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { containerVariants, cardVariants, ANIMATION_DURATION, EASE_CURVE } from '@/constants/animations';
-import { title } from 'process';
 
 const competitions = [
   {
@@ -12,7 +11,8 @@ const competitions = [
     rank: 'National Silver',
     icon: Award,
     period: '2024',
-    description: 'Achieved National Silver recognition in the American Computer Science League, competing against top high school students across the country in algorithmic problem-solving.'
+    description: 'Achieved National Silver recognition in the American Computer Science League, competing against top high school students across the country in algorithmic problem-solving.',
+    url: 'https://www.acsl.org/'
   },
   {
     id: 'usaco-2024',
@@ -20,7 +20,8 @@ const competitions = [
     rank: 'Silver Division',
     icon: Trophy,
     period: '2024',
-    description: 'Advanced to Silver Division in the USA Computing Olympiad, demonstrating proficiency in algorithms, data structures, and competitive programming techniques.'
+    description: 'Advanced to Silver Division in the USA Computing Olympiad, demonstrating proficiency in algorithms, data structures, and competitive programming techniques.',
+    url: 'https://usaco.org/'
   },
   {
     id: 'tjioi-2024',
@@ -28,7 +29,8 @@ const competitions = [
     rank: '1st place solo',
     icon: Medal,
     period: '2024',
-    description: 'Secured 1st place in the Beginner Division of the Thomas Jefferson Invitational Olympiad in Informatics, showcasing strong problem-solving skills and coding ability.'
+    description: 'Secured 1st place in the Beginner Division of the Thomas Jefferson Invitational Olympiad in Informatics, showcasing strong problem-solving skills and coding ability.',
+    url: 'https://activities.tjhsst.edu/tjioi/'
   },
   {
     id: 'calico-2025',
@@ -36,7 +38,8 @@ const competitions = [
     rank: '135th place',
     icon: CircleStar,
     period: '2025',
-    description: 'Ranked 135th in the California Informatics Olympiad, competing among hundreds of participants in challenging algorithmic contests.'
+    description: 'Ranked 135th in the California Informatics Olympiad, competing among hundreds of participants in challenging algorithmic contests.',
+    url: 'https://calico.cs.berkeley.edu/'
   }
 ]
 
@@ -64,17 +67,21 @@ export default function Competitions() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {competitions.map((comp) => (
-            <motion.div
+            <motion.a
               key={comp.id}
+              href={comp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Visit ${comp.title} website`}
               variants={cardVariants}
-              className="bg-[#24262e] rounded-xl p-6 border border-gray-800"
+              className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer block"
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-green-600/20 to-green-600/5 rounded-lg flex items-center justify-center border border-green-600/20">
                   <comp.icon className="text-green-500" size={32} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-xl font-bold text-white mb-1">
+                  <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-1">
                     {comp.title}
                   </h3>
                   <p className="text-primary font-semibold mb-2">
@@ -88,7 +95,7 @@ export default function Competitions() {
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </motion.div>
       </div>

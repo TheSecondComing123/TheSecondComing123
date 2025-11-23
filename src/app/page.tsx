@@ -21,9 +21,7 @@ export default function Home() {
           </ErrorBoundary>
         </AnimatedSection>
         <Competitions />
-        <AnimatedSection delay={0.2}>
-          <Footer />
-        </AnimatedSection>
+        <Footer />
       </main>
     </>
   )

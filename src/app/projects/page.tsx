@@ -12,9 +12,7 @@ export default function ProjectsPage() {
       <main className="pt-24 pb-20">
         <Projects />
       </main>
-      <AnimatedSection delay={0.3}>
-        <Footer />
-      </AnimatedSection>
+      <Footer />
     </div>
   )
 }
