@@ -16,7 +16,7 @@ export async function GET(request: Request) {
   const refreshCache = url.searchParams.get('refresh') === 'true'
   const yearParam = url.searchParams.get('year') || new Date().getFullYear().toString()
 
-  // Validate year parameter
+  // Validate year
   const year = parseInt(yearParam, 10)
   const currentYear = new Date().getFullYear()
   if (isNaN(year) || year < 2008 || year > currentYear) {
@@ -56,7 +56,7 @@ export async function GET(request: Request) {
     console.error('Error fetching GitHub contributions:', error)
     const errorMessage = error instanceof Error ? error.message : String(error)
 
-    // Check for specific error types
+    // Check for errors
     if (errorMessage.includes('GITHUB_ACCESS_TOKEN')) {
       return NextResponse.json(
         { error: 'GitHub authentication failed', details: 'Missing or invalid GitHub access token' },

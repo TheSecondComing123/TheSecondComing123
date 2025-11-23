@@ -1,4 +1,4 @@
-// Color constants for consistent theming
+// Color constants
 
 export const COLORS = {
   background: {
