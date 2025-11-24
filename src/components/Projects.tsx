@@ -43,7 +43,7 @@ export default function Projects() {
           <Link key={project.id} href={`/projects/${project.id}`}>
             <motion.div
               variants={cardVariants}
-              className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+              className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-all duration-300 group cursor-pointer h-full flex flex-col"
             >
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20">
