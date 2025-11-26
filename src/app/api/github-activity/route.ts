@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import cache from '@/lib/cache'
 import { fetchGitHubContributions, ContributionDay } from '@/lib/github'
-import { CACHE_TTL_DAILY } from '@/constants/github'
+import { CACHE_TTL_DAILY, GITHUB_CONFIG } from '@/constants/github'
+import { CACHE_CONFIG, DATE_FORMATS } from '@/constants/api'
 
 interface GitHubActivityApiResponse {
   source: 'graphql' | 'cache'
@@ -9,24 +10,22 @@ interface GitHubActivityApiResponse {
   totalContributions: number
 }
 
-const GITHUB_ACTIVITY_CACHE_KEY = 'github_activity_data'
-
 export async function GET(request: Request) {
   const url = new URL(request.url)
-  const refreshCache = url.searchParams.get('refresh') === 'true'
+  const refreshCache = url.searchParams.get(CACHE_CONFIG.REFRESH_PARAM) === CACHE_CONFIG.REFRESH_VALUE
   const yearParam = url.searchParams.get('year') || new Date().getFullYear().toString()
 
   // Validate year
   const year = parseInt(yearParam, 10)
   const currentYear = new Date().getFullYear()
-  if (isNaN(year) || year < 2008 || year > currentYear) {
+  if (isNaN(year) || year < GITHUB_CONFIG.MIN_YEAR || year > currentYear) {
     return NextResponse.json(
-      { error: 'Invalid year parameter', details: `Year must be between 2008 and ${currentYear}` },
+      { error: 'Invalid year parameter', details: `Year must be between ${GITHUB_CONFIG.MIN_YEAR} and ${currentYear}` },
       { status: 400 }
     )
   }
 
-  const cacheKey = `${GITHUB_ACTIVITY_CACHE_KEY}_${year}`
+  const cacheKey = `${CACHE_CONFIG.PREFIX}_${year}`
 
   if (refreshCache) {
     cache.del(cacheKey)
@@ -38,8 +37,8 @@ export async function GET(request: Request) {
   }
 
   try {
-    const fromDate = `${year}-01-01`
-    const toDate = `${year}-12-31`
+    const fromDate = `${year}${DATE_FORMATS.YEAR_START}`
+    const toDate = `${year}${DATE_FORMATS.YEAR_END}`
 
     const { contributions, totalContributions } = await fetchGitHubContributions(fromDate, toDate)
 

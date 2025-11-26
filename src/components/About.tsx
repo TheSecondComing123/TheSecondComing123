@@ -4,7 +4,14 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Code, Palette, Trophy, Gamepad2, Bot, Rocket, Sparkles, Terminal, Globe, Cpu } from 'lucide-react';
 import { containerVariants, itemVariants } from '@/constants/animations';
+import { ANIMATION_DURATION, ANIMATION_DELAY, ANIMATION_OFFSET, VIEWPORT_CONFIG } from '@/constants/animation-values';
+import { EASE_CURVE } from '@/constants/animations';
+import { GRID_LAYOUTS } from '@/constants/layout';
+import { ICON_SIZE } from '@/constants/ui';
 import { cn, theme } from '@/lib/theme';
+import { Container } from '@/components/ui/Container';
+import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
+import { Card } from '@/components/ui/Card';
 
 const skills = [
   {
@@ -74,22 +81,17 @@ const interests = [
 
 export default function About() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Container>
       {/* Hero Section */}
       <section className="py-20">
-        <motion.h1
-          className={cn('text-5xl md:text-7xl font-bold mb-6', theme.text.heading)}
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
+        <AnimatedHeading as="h1" className="text-5xl md:text-7xl font-bold mb-6" delay={ANIMATION_DELAY.SHORT}>
           About Me
-        </motion.h1>
+        </AnimatedHeading>
         <motion.div
           className={cn('text-lg space-y-4 max-w-3xl', theme.text.body)}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
+          transition={{ duration: ANIMATION_DURATION.SLOW, delay: ANIMATION_DELAY.MEDIUM, ease: EASE_CURVE }}
         >
           <p>
             Hi! I&apos;m <span className="text-primary font-semibold">Alan Bagel</span>, a competitive programmer and full-stack developer who loves building things with code.
@@ -105,62 +107,40 @@ export default function About() {
 
       {/* Skills Section */}
       <section className="py-20">
-        <motion.h2
-          className={cn('text-4xl font-bold mb-12', theme.text.heading)}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
+        <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
           Skills & Technologies
-        </motion.h2>
+        </AnimatedHeading>
         <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className={GRID_LAYOUTS.THREE_COLUMN_RESPONSIVE}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={VIEWPORT_CONFIG.SMALL_AMOUNT}
         >
-          {skills.map((skill) => {
-            const Icon = skill.icon;
-            return (
-              <motion.div
-                key={skill.id}
-                variants={itemVariants}
-                className={cn('rounded-xl p-6 hover:border-primary/30 transition-colors group', theme.bg.card, theme.border.subtle)}
-              >
-                <div className="w-16 h-16 bg-linear-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 border border-primary/20 group-hover:border-primary/40 transition-colors">
-                  <Icon className="text-primary" size={32} />
-                </div>
-                <h3 className={cn('text-xl font-semibold mb-2 group-hover:text-primary transition-colors', theme.text.heading)}>
-                  {skill.name}
-                </h3>
-                <p className={cn('text-sm', theme.text.muted)}>
-                  {skill.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {skills.map((skill) => (
+            <Card
+              key={skill.id}
+              icon={<skill.icon className="text-primary" size={ICON_SIZE.MD} />}
+              iconSize="MD"
+              title={skill.name}
+              description={skill.description}
+              enableHover={false}
+            />
+          ))}
         </motion.div>
       </section>
 
       {/* Competitive Programming Journey */}
       <section className="py-20">
-        <motion.h2
-          className={cn('text-4xl font-bold mb-6', theme.text.heading)}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
+        <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-6">
           Competitive Programming Journey
-        </motion.h2>
+        </AnimatedHeading>
         <motion.p
           className={cn('text-lg mb-12 max-w-3xl', theme.text.body)}
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: [0.21, 0.47, 0.32, 0.98] }}
+          viewport={VIEWPORT_CONFIG.DEFAULT}
+          transition={{ duration: ANIMATION_DURATION.SLOW, delay: ANIMATION_DELAY.SHORT, ease: EASE_CURVE }}
         >
           Competitive programming has been a huge part of my development journey. I&apos;ve competed in various contests and earned recognition at the national level:
         </motion.p>
@@ -301,42 +281,27 @@ export default function About() {
 
       {/* Interests Section */}
       <section className="py-20">
-        <motion.h2
-          className={cn("text-4xl font-bold mb-12 ", theme.text.heading)}
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
-        >
+        <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
           What I Love Doing
-        </motion.h2>
+        </AnimatedHeading>
         <motion.div
-          className="grid md:grid-cols-2 gap-6"
+          className={GRID_LAYOUTS.TWO_COLUMN_RESPONSIVE}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={VIEWPORT_CONFIG.SMALL_AMOUNT}
         >
-          {interests.map((interest) => {
-            const Icon = interest.icon;
-            return (
-              <motion.div
-                key={interest.id}
-                variants={itemVariants}
-                className={cn("rounded-xl p-8", theme.bg.card, theme.border.subtle)}
-              >
-                <div className="w-16 h-16 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 border border-primary/20">
-                  <Icon className="text-primary" size={32} />
-                </div>
-                <h3 className={cn("text-2xl font-semibold  mb-3", theme.text.heading)}>
-                  {interest.title}
-                </h3>
-                <p className={cn(" leading-relaxed", theme.text.body)}>
-                  {interest.description}
-                </p>
-              </motion.div>
-            );
-          })}
+          {interests.map((interest) => (
+            <Card
+              key={interest.id}
+              icon={<interest.icon className="text-primary" size={ICON_SIZE.MD} />}
+              iconSize="MD"
+              title={interest.title}
+              description={interest.description}
+              enableHover={false}
+              className="p-8"
+            />
+          ))}
         </motion.div>
       </section>
 
@@ -344,10 +309,10 @@ export default function About() {
       <section className="py-20">
         <motion.div
           className="bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl p-12 border border-primary/20 text-center"
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+          viewport={VIEWPORT_CONFIG.DEFAULT}
+          transition={{ duration: ANIMATION_DURATION.SLOW, ease: EASE_CURVE }}
         >
           <h2 className={cn("text-3xl md:text-4xl font-bold  mb-4", theme.text.heading)}>
             Want to see what I&apos;ve built?
@@ -375,6 +340,6 @@ export default function About() {
           </div>
         </motion.div>
       </section>
-    </div>
+    </Container>
   );
 }

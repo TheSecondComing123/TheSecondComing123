@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
+import { ANIMATION_DURATION, ANIMATION_OFFSET, VIEWPORT_CONFIG } from '@/constants/animation-values';
+import { EASE_CURVE } from '@/constants/animations';
 
 interface AnimatedSectionProps {
   children: ReactNode;
@@ -9,6 +11,12 @@ interface AnimatedSectionProps {
   className?: string;
 }
 
+/**
+ * AnimatedSection Component
+ *
+ * Wrapper component for scroll-triggered fade-up animations.
+ * Uses centralized animation constants for consistent timing.
+ */
 export default function AnimatedSection({
   children,
   delay = 0,
@@ -16,13 +24,13 @@ export default function AnimatedSection({
 }: AnimatedSectionProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={VIEWPORT_CONFIG.DEFAULT}
       transition={{
-        duration: 0.7,
+        duration: ANIMATION_DURATION.SLOW,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98]
+        ease: EASE_CURVE
       }}
       className={className}
     >

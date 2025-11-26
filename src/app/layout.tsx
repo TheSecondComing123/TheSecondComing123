@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Outfit } from 'next/font/google'
+import { Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import { cn, theme } from '@/lib/theme'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap' })
-const outfit = Outfit({ subsets: ['latin'], display: 'swap' })
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://alanbagel.com'),
