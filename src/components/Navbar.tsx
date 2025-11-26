@@ -38,13 +38,13 @@ export default function Navbar() {
     <nav className={cn("fixed w-full z-50 border-b", theme.bg.page, theme.border.default)} aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-2xl font-bold text-primary" aria-label="Alan Bagel - Home">
+          <Link href="/" className={cn("text-2xl font-bold text-primary", theme.font.heading)} aria-label="Alan Bagel - Home">
             Alan Bagel
           </Link>
           <div className="flex items-center space-x-8">
-            <Link href="/" className={cn("", theme.text.heading)} aria-label="Navigate to home page">Home</Link>
-            <Link href="/about" className={cn("", theme.text.heading)} aria-label="Navigate to about page">About</Link>
-            <Link href="/projects" className={cn("", theme.text.heading)} aria-label="Navigate to projects page">Projects</Link>
+            <Link href="/" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to home page">Home</Link>
+            <Link href="/about" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to about page">About</Link>
+            <Link href="/projects" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to projects page">Projects</Link>
             <button
               type="button"
               onClick={toggleTheme}

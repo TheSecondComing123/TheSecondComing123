@@ -96,6 +96,7 @@ export function Card({
             className={cn(
               'text-xl font-bold transition-colors',
               enableHover && 'group-hover:text-primary',
+              theme.font.heading,
               theme.text.heading
             )}
           >
@@ -103,18 +104,18 @@ export function Card({
           </h3>
 
           {subtitle && (
-            <p className="text-primary font-medium mt-1">
+            <p className={cn('text-primary font-medium mt-1', theme.font.body)}>
               {subtitle}
             </p>
           )}
 
           {metadata && (
-            <p className={cn('text-xs uppercase tracking-wide mt-1', theme.text.muted)}>
+            <p className={cn('text-xs uppercase tracking-wide mt-1', theme.font.body, theme.text.muted)}>
               {metadata}
             </p>
           )}
 
-          <p className={cn('mt-2', theme.text.muted)}>
+          <p className={cn('mt-2', theme.font.body, theme.text.muted)}>
             {description}
           </p>
         </div>

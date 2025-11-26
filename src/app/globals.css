@@ -23,7 +23,14 @@
         --border: 220 13% 20%;
     }
 
+    /* Font Variables */
+    :root {
+        --font-heading: var(--font-space-grotesk);
+        --font-body: var(--font-outfit);
+    }
+
     body {
+        font-family: var(--font-body), system-ui, sans-serif;
         color: oklch(97.9% 0.021 166.113);
     }
 

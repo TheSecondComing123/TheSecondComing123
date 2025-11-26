@@ -35,7 +35,7 @@ export function IconBox({
   return (
     <div
       className={cn(
-        'bg-gradient-to-br from-primary/20 to-primary/5',
+        'bg-linear-to-br from-primary/20 to-primary/5',
         'rounded-lg flex items-center justify-center',
         'border border-primary/20',
         ICON_CONTAINER_SIZE[size],

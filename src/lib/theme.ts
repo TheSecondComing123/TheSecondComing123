@@ -117,6 +117,17 @@ export const theme = {
     /** Grid border color */
     border: 'border-gray-300 dark:border-green-900/30',
   },
+
+  /**
+   * Font family variants - semantic font application
+   */
+  font: {
+    /** Heading font - Space Grotesk for H1-H6, display text, logos */
+    heading: 'font-heading',
+
+    /** Body font - Outfit for paragraphs, UI elements, buttons */
+    body: 'font-body',
+  },
 };
 
 /**
@@ -127,3 +138,4 @@ export type ThemeBg = keyof typeof theme.bg;
 export type ThemeText = keyof typeof theme.text;
 export type ThemeBorder = keyof typeof theme.border;
 export type ThemeGithub = keyof typeof theme.github;
+export type ThemeFont = keyof typeof theme.font;
