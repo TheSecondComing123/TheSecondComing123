@@ -158,7 +158,7 @@ export default function GitHubContributions() {
         <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <h2 className={cn("text-2xl font-bold ", theme.text.heading)}>
+              <h2 className={cn("text-2xl font-bold ", theme.font.heading, theme.text.heading)}>
                 Contribution Graph
               </h2>
               <div className={cn("flex items-center gap-2 p-1 rounded-lg border", theme.border.control, theme.bg.tertiary)}>
@@ -204,13 +204,13 @@ export default function GitHubContributions() {
           </div>
           
           {isLoading ? (
-            <p className={cn(" py-8", theme.text.muted)}>Loading contributions...</p>
+            <p className={cn(" py-8", theme.font.body, theme.text.muted)}>Loading contributions...</p>
           ) : displayData.length > 0 ? (
             <>
               <div className="mb-4 overflow-x-hidden">
                 <div className="flex gap-3">
                   {/* Day labels */}
-                  <div className={cn("grid grid-rows-7 gap-1 text-xs  pt-5 auto-rows-fr", theme.text.muted)}>
+                  <div className={cn("grid grid-rows-7 gap-1 text-xs  pt-5 auto-rows-fr", theme.font.body, theme.text.muted)}>
                     <div className="flex items-center">Mon</div>
                     <div></div>
                     <div className="flex items-center">Wed</div>
@@ -222,7 +222,7 @@ export default function GitHubContributions() {
 
                   <div className="flex-1 min-w-0">
                     {/* Month labels */}
-                    <div className={cn("relative text-xs  mb-1 h-4", theme.text.muted)}>
+                    <div className={cn("relative text-xs  mb-1 h-4", theme.font.body, theme.text.muted)}>
                       {monthLabels.map((month, index) => (
                         <div
                           key={index}
@@ -255,7 +255,7 @@ export default function GitHubContributions() {
                 </div>
               </div>
               
-              <div className={cn("flex items-center justify-between text-sm ", theme.text.muted)}>
+              <div className={cn("flex items-center justify-between text-sm ", theme.font.body, theme.text.muted)}>
                 <span className="text-yellow-400">
                   {isPlaying ? 'Game of Life Running...' : `${totalContributions.toLocaleString()} contributions in ${selectedYear}`}
                 </span>
@@ -278,7 +278,7 @@ export default function GitHubContributions() {
               </div>
             </>
           ) : (
-            <p className={cn(" py-8", theme.text.muted)}>Could not load contribution data.</p>
+            <p className={cn(" py-8", theme.font.body, theme.text.muted)}>Could not load contribution data.</p>
           )}
         </div>
       </Container>

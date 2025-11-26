@@ -25,6 +25,11 @@ module.exports = {
                     950: 'oklch(0.266 0.065 152.934)',
                 },
             },
+            fontFamily: {
+                heading: ['var(--font-heading)', 'system-ui', 'sans-serif'],
+                body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+                sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
+            },
         },
     },
     plugins: [],

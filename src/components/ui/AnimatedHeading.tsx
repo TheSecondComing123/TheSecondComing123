@@ -69,7 +69,7 @@ export function AnimatedHeading({
 
   return (
     <motion.div {...animationProps}>
-      <Component className={cn(theme.text.heading, className)}>
+      <Component className={cn(theme.font.heading, theme.text.heading, className)}>
         {children}
       </Component>
     </motion.div>

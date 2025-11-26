@@ -88,7 +88,7 @@ export default function About() {
           About Me
         </AnimatedHeading>
         <motion.div
-          className={cn('text-lg space-y-4 max-w-3xl', theme.text.body)}
+          className={cn('text-lg space-y-4 max-w-3xl', theme.font.body, theme.text.body)}
           initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: ANIMATION_DURATION.SLOW, delay: ANIMATION_DELAY.MEDIUM, ease: EASE_CURVE }}
@@ -169,9 +169,9 @@ export default function About() {
                       <Trophy className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>ACSL National Silver</h3>
-                      <p className="text-primary text-sm font-medium mb-2">2024</p>
-                      <p className={cn(" text-sm", theme.text.muted)}>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>ACSL National Silver</h3>
+                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024</p>
+                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
                         Earned National Silver ranking in the American Computer Science League, competing against top high school students across the country.
                       </p>
                     </div>
@@ -205,9 +205,9 @@ export default function About() {
                       <Code className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>USACO Silver Division</h3>
-                      <p className="text-primary text-sm font-medium mb-2">2024</p>
-                      <p className={cn(" text-sm", theme.text.muted)}>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>USACO Silver Division</h3>
+                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024</p>
+                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
                         Achieved Silver Division status in the USA Computing Olympiad through strong algorithmic problem-solving and efficient code implementation.
                       </p>
                     </div>
@@ -229,9 +229,9 @@ export default function About() {
                       <Sparkles className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>TJIOI 1st Place Solo</h3>
-                      <p className="text-primary text-sm font-medium mb-2">2024 - Beginner Division</p>
-                      <p className={cn(" text-sm", theme.text.muted)}>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>TJIOI 1st Place Solo</h3>
+                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024 - Beginner Division</p>
+                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
                         Won first place competing solo in the Thomas Jefferson Invitational Olympiad in Informatics, demonstrating strong individual problem-solving skills.
                       </p>
                     </div>
@@ -265,9 +265,9 @@ export default function About() {
                       <Cpu className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>CalICO 135th Place</h3>
-                      <p className="text-primary text-sm font-medium mb-2">2025</p>
-                      <p className={cn(" text-sm", theme.text.muted)}>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>CalICO 135th Place</h3>
+                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2025</p>
+                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
                         Competed in the California Informatics Olympiad among hundreds of talented participants from across the state.
                       </p>
                     </div>
@@ -314,10 +314,10 @@ export default function About() {
           viewport={VIEWPORT_CONFIG.DEFAULT}
           transition={{ duration: ANIMATION_DURATION.SLOW, ease: EASE_CURVE }}
         >
-          <h2 className={cn("text-3xl md:text-4xl font-bold  mb-4", theme.text.heading)}>
+          <h2 className={cn("text-3xl md:text-4xl font-bold  mb-4", theme.font.heading, theme.text.heading)}>
             Want to see what I&apos;ve built?
           </h2>
-          <p className={cn("text-lg mb-8 max-w-2xl mx-auto", theme.text.body)}>
+          <p className={cn("text-lg mb-8 max-w-2xl mx-auto", theme.font.body, theme.text.body)}>
             Check out my projects to see some of the things I&apos;ve created, or visit my GitHub to explore my code.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

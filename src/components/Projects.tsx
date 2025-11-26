@@ -19,7 +19,7 @@ export default function Projects() {
         Projects
       </AnimatedHeading>
       <motion.p
-        className={cn("text-lg mb-12 max-w-3xl leading-relaxed", theme.text.body)}
+        className={cn("text-lg mb-12 max-w-3xl leading-relaxed", theme.font.body, theme.text.body)}
         initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
         animate={{ opacity: 1, y: 0 }}
         transition={{

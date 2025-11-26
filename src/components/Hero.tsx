@@ -16,19 +16,19 @@ export default function Hero() {
           animate="visible"
         >
           <motion.h1
-            className={cn('text-5xl md:text-7xl font-bold mb-6', theme.text.heading)}
+            className={cn('text-5xl md:text-7xl font-bold mb-6', theme.font.heading, theme.text.heading)}
             variants={itemVariants}
           >
             Hi, I&apos;m <span className="text-primary">Alan Bagel</span>
         </motion.h1>
         <motion.p
-          className={cn('text-xl md:text-2xl mb-8', theme.text.body)}
+          className={cn('text-xl md:text-2xl mb-8', theme.font.body, theme.text.body)}
           variants={itemVariants}
         >
           Competitive Programmer • Developer
         </motion.p>
         <motion.p
-          className={cn('text-lg leading-relaxed max-w-3xl mx-auto mb-6', theme.text.body)}
+          className={cn('text-lg leading-relaxed max-w-3xl mx-auto mb-6', theme.font.body, theme.text.body)}
           variants={itemVariants}
         >
           I enjoy doing competitive programming and building websites and apps in my free time,

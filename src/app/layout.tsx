@@ -1,9 +1,21 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk } from 'next/font/google'
+import { Space_Grotesk, Outfit } from 'next/font/google'
 import './globals.css'
 import { cn, theme } from '@/lib/theme'
 
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap' })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  display: 'swap',
+  variable: '--font-space-grotesk'
+})
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  display: 'swap',
+  variable: '--font-outfit'
+})
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'https://alanbagel.com'),
@@ -77,7 +89,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cn(spaceGrotesk.className, theme.bg.page)}>
+      <body className={cn(spaceGrotesk.variable, outfit.variable, theme.bg.page)}>
         {children}
       </body>
     </html>
