@@ -1,18 +1,19 @@
 'use client';
 
-import { useEffect, useState, useCallback, useRef, CSSProperties } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { ContributionDay } from '@/lib/github'
 import { GITHUB_YEARS } from '@/constants/github'
 import { Play, Pause, RotateCcw } from 'lucide-react'
+import { cn, theme } from '@/lib/theme'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
-    case 0: return 'bg-green-950/30'
-    case 1: return 'bg-green-800'
-    case 2: return 'bg-green-700'
-    case 3: return 'bg-green-600'
-    case 4: return 'bg-green-500'
-    default: return 'bg-green-950/30'
+    case 0: return theme.github.level0 
+    case 1: return theme.github.level1
+    case 2: return theme.github.level2 
+    case 3: return theme.github.level3
+    case 4: return theme.github.level4
+    default: return theme.github.level0
   }
 }
 
@@ -153,19 +154,19 @@ export default function GitHubContributions() {
   return (
     <section id="github" className="pt-4 pb-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
+        <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
-              <h2 className="text-2xl font-bold text-white">
+              <h2 className={cn("text-2xl font-bold ", theme.text.heading)}>
                 Contribution Graph
               </h2>
-              <div className="flex items-center gap-2 bg-black/20 p-1 rounded-lg border border-white/5">
+              <div className={cn("flex items-center gap-2 p-1 rounded-lg border", theme.border.control, theme.bg.tertiary)}>
                 <button
                   onClick={toggleGame}
                   className={`p-1.5 rounded-md transition-colors ${
-                    isPlaying 
-                      ? 'bg-green-600 text-white' 
-                      : 'text-gray-400 hover:text-white hover:bg-white/10'
+                    isPlaying
+                      ? 'bg-green-600 text-white'
+                      : cn(theme.text.muted, theme.hover.text, theme.hover.bg)
                   }`}
                   title={isPlaying ? "Pause Game of Life" : "Play Game of Life"}
                 >
@@ -174,7 +175,7 @@ export default function GitHubContributions() {
                 {(isPlaying || gameData.length > 0) && (
                   <button
                     onClick={resetGame}
-                    className="p-1.5 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+                    className={cn("p-1.5 rounded-md transition-colors", theme.text.muted, theme.hover.text, theme.hover.bg)}
                     title="Reset to GitHub Data"
                   >
                     <RotateCcw size={16} />
@@ -190,7 +191,7 @@ export default function GitHubContributions() {
                   className={`px-3 py-1.5 rounded-md text-sm font-medium ${
                     selectedYear === year
                       ? 'bg-green-600 text-white'
-                      : 'bg-transparent text-gray-400 hover:text-white'
+                      : cn("bg-transparent", theme.text.muted, theme.hover.text)
                   }`}
                   aria-label={`View ${year} contributions`}
                   aria-current={selectedYear === year ? "true" : undefined}
@@ -202,13 +203,13 @@ export default function GitHubContributions() {
           </div>
           
           {isLoading ? (
-            <p className="text-gray-400 py-8">Loading contributions...</p>
+            <p className={cn(" py-8", theme.text.muted)}>Loading contributions...</p>
           ) : displayData.length > 0 ? (
             <>
-              <div className="mb-4 overflow-x-auto">
+              <div className="mb-4 overflow-x-hidden">
                 <div className="flex gap-3">
                   {/* Day labels */}
-                  <div className="grid grid-rows-7 gap-1 text-xs text-gray-400 pt-5 auto-rows-fr">
+                  <div className={cn("grid grid-rows-7 gap-1 text-xs  pt-5 auto-rows-fr", theme.text.muted)}>
                     <div className="flex items-center">Mon</div>
                     <div></div>
                     <div className="flex items-center">Wed</div>
@@ -220,7 +221,7 @@ export default function GitHubContributions() {
 
                   <div className="flex-1 min-w-0">
                     {/* Month labels */}
-                    <div className="relative text-xs text-gray-400 mb-1 h-4">
+                    <div className={cn("relative text-xs  mb-1 h-4", theme.text.muted)}>
                       {monthLabels.map((month, index) => (
                         <div
                           key={index}
@@ -239,7 +240,11 @@ export default function GitHubContributions() {
                       {displayData.map((day, i) => (
                         <div
                           key={`${day.date}-${i}`}
-                          className={`aspect-square rounded-sm ${getLevelColor(day.level)} border border-green-900/30 transition-colors duration-150`}
+                          className={cn(
+                            'aspect-square rounded-sm border transition-colors duration-150',
+                            getLevelColor(day.level),
+                            theme.github.border
+                          )}
                           title={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                           aria-label={`${day.count} contribution${day.count !== 1 ? 's' : ''} on ${day.date}`}
                         />
@@ -249,7 +254,7 @@ export default function GitHubContributions() {
                 </div>
               </div>
               
-              <div className="flex items-center justify-between text-sm text-gray-400">
+              <div className={cn("flex items-center justify-between text-sm ", theme.text.muted)}>
                 <span className="text-yellow-400">
                   {isPlaying ? 'Game of Life Running...' : `${totalContributions.toLocaleString()} contributions in the last year`}
                 </span>
@@ -259,7 +264,11 @@ export default function GitHubContributions() {
                     {[0, 1, 2, 3, 4].map((level) => (
                       <div
                         key={level}
-                        className={`w-3 h-3 rounded-sm ${getLevelColor(level)} border border-green-900/30`}
+                        className={cn(
+                          'w-3 h-3 rounded-sm border',
+                          getLevelColor(level),
+                          theme.github.border
+                        )}
                       />
                     ))}
                   </div>
@@ -268,7 +277,7 @@ export default function GitHubContributions() {
               </div>
             </>
           ) : (
-            <p className="text-gray-400 py-8">Could not load contribution data.</p>
+            <p className={cn(" py-8", theme.text.muted)}>Could not load contribution data.</p>
           )}
         </div>
       </div>

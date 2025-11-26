@@ -1,5 +1,7 @@
 'use client';
 
+import { cn, theme } from '@/lib/theme';
+
 import { useEffect } from 'react';
 import Link from 'next/link';
 
@@ -15,7 +17,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#16181d] flex items-center justify-center px-4">
+    <div className={cn("min-h-screen  flex items-center justify-center px-4", theme.bg.page)}>
       <div className="max-w-md w-full text-center">
         <div className="mb-8">
           <div className="w-20 h-20 bg-red-950/30 border border-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -33,8 +35,8 @@ export default function Error({
               />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">Something Went Wrong</h1>
-          <p className="text-gray-400 mb-6">
+          <h1 className={cn("text-3xl font-bold  mb-2", theme.text.heading)}>Something Went Wrong</h1>
+          <p className="text-gray-700 dark:text-gray-400 mb-6">
             We encountered an error while loading this project. Please try again.
           </p>
         </div>

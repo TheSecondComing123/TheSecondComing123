@@ -1,8 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Code, Palette, Trophy, Gamepad2, Bot, Rocket, Sparkles, Terminal, Globe, Cpu } from 'lucide-react';
 import { containerVariants, itemVariants } from '@/constants/animations';
+import { cn, theme } from '@/lib/theme';
 
 const skills = [
   {
@@ -76,7 +78,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="py-20">
         <motion.h1
-          className="text-5xl md:text-7xl font-bold mb-6 text-white"
+          className={cn('text-5xl md:text-7xl font-bold mb-6', theme.text.heading)}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -84,7 +86,7 @@ export default function About() {
           About Me
         </motion.h1>
         <motion.div
-          className="text-lg text-gray-300 space-y-4 max-w-3xl"
+          className={cn('text-lg space-y-4 max-w-3xl', theme.text.body)}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.21, 0.47, 0.32, 0.98] }}
@@ -104,7 +106,7 @@ export default function About() {
       {/* Skills Section */}
       <section className="py-20">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-white"
+          className={cn('text-4xl font-bold mb-12', theme.text.heading)}
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -125,15 +127,15 @@ export default function About() {
               <motion.div
                 key={skill.id}
                 variants={itemVariants}
-                className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 hover:border-primary/30 transition-colors group"
+                className={cn('rounded-xl p-6 hover:border-primary/30 transition-colors group', theme.bg.card, theme.border.subtle)}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 border border-primary/20 group-hover:border-primary/40 transition-colors">
+                <div className="w-16 h-16 bg-linear-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mb-4 border border-primary/20 group-hover:border-primary/40 transition-colors">
                   <Icon className="text-primary" size={32} />
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary transition-colors">
+                <h3 className={cn('text-xl font-semibold mb-2 group-hover:text-primary transition-colors', theme.text.heading)}>
                   {skill.name}
                 </h3>
-                <p className="text-gray-400 text-sm">
+                <p className={cn('text-sm', theme.text.muted)}>
                   {skill.description}
                 </p>
               </motion.div>
@@ -145,7 +147,7 @@ export default function About() {
       {/* Competitive Programming Journey */}
       <section className="py-20">
         <motion.h2
-          className="text-4xl font-bold mb-6 text-white"
+          className={cn('text-4xl font-bold mb-6', theme.text.heading)}
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -154,7 +156,7 @@ export default function About() {
           Competitive Programming Journey
         </motion.h2>
         <motion.p
-          className="text-lg text-gray-300 mb-12 max-w-3xl"
+          className={cn('text-lg mb-12 max-w-3xl', theme.text.body)}
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -170,7 +172,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.1 }}
         >
           {/* Timeline line - hidden on mobile */}
-          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2 shadow-[0_0_15px_rgba(74,222,128,0.3)]" />
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2 shadow-[0_0_15px_rgba(74,222,128,0.3)]" />
 
           {/* Timeline items */}
           <div className="space-y-8 md:space-y-12">
@@ -181,15 +183,15 @@ export default function About() {
             >
               {/* Left content */}
               <div className="md:text-right">
-                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 inline-block w-full">
+                <div className={cn("rounded-xl p-6 inline-block w-full", theme.bg.card, theme.border.subtle)}>
                   <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                    <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Trophy className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-white mb-1">ACSL National Silver</h3>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>ACSL National Silver</h3>
                       <p className="text-primary text-sm font-medium mb-2">2024</p>
-                      <p className="text-gray-400 text-sm">
+                      <p className={cn(" text-sm", theme.text.muted)}>
                         Earned National Silver ranking in the American Computer Science League, competing against top high school students across the country.
                       </p>
                     </div>
@@ -198,7 +200,7 @@ export default function About() {
               </div>
               {/* Timeline dot */}
               <div className="hidden md:flex justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+                <div className="w-6 h-6 rounded-full bg-linear-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
               {/* Right spacer */}
               <div className="hidden md:block" />
@@ -213,19 +215,19 @@ export default function About() {
               <div className="hidden md:block" />
               {/* Timeline dot */}
               <div className="hidden md:flex justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+                <div className="w-6 h-6 rounded-full bg-linear-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
               {/* Right content */}
               <div>
-                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
+                <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                    <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Code className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-1">USACO Silver Division</h3>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>USACO Silver Division</h3>
                       <p className="text-primary text-sm font-medium mb-2">2024</p>
-                      <p className="text-gray-400 text-sm">
+                      <p className={cn(" text-sm", theme.text.muted)}>
                         Achieved Silver Division status in the USA Computing Olympiad through strong algorithmic problem-solving and efficient code implementation.
                       </p>
                     </div>
@@ -241,15 +243,15 @@ export default function About() {
             >
               {/* Left content */}
               <div className="md:text-right">
-                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50 inline-block w-full">
+                <div className={cn("rounded-xl p-6 inline-block w-full", theme.bg.card, theme.border.subtle)}>
                   <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                    <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Sparkles className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-white mb-1">TJIOI 1st Place Solo</h3>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>TJIOI 1st Place Solo</h3>
                       <p className="text-primary text-sm font-medium mb-2">2024 - Beginner Division</p>
-                      <p className="text-gray-400 text-sm">
+                      <p className={cn(" text-sm", theme.text.muted)}>
                         Won first place competing solo in the Thomas Jefferson Invitational Olympiad in Informatics, demonstrating strong individual problem-solving skills.
                       </p>
                     </div>
@@ -258,7 +260,7 @@ export default function About() {
               </div>
               {/* Timeline dot */}
               <div className="hidden md:flex justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+                <div className="w-6 h-6 rounded-full bg-linear-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
               {/* Right spacer */}
               <div className="hidden md:block" />
@@ -273,19 +275,19 @@ export default function About() {
               <div className="hidden md:block" />
               {/* Timeline dot */}
               <div className="hidden md:flex justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
+                <div className="w-6 h-6 rounded-full bg-linear-to-br from-primary via-primary to-primary/80 border-[6px] border-[#16181d] relative z-10 shadow-[0_0_20px_rgba(74,222,128,0.5)] animate-pulse" />
               </div>
               {/* Right content */}
               <div>
-                <div className="bg-[#24262e] rounded-xl p-6 border border-gray-800/50">
+                <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 flex-shrink-0">
+                    <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Cpu className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-1">CalICO 135th Place</h3>
+                      <h3 className={cn("text-xl font-semibold  mb-1", theme.text.heading)}>CalICO 135th Place</h3>
                       <p className="text-primary text-sm font-medium mb-2">2025</p>
-                      <p className="text-gray-400 text-sm">
+                      <p className={cn(" text-sm", theme.text.muted)}>
                         Competed in the California Informatics Olympiad among hundreds of talented participants from across the state.
                       </p>
                     </div>
@@ -300,7 +302,7 @@ export default function About() {
       {/* Interests Section */}
       <section className="py-20">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-white"
+          className={cn("text-4xl font-bold mb-12 ", theme.text.heading)}
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -321,15 +323,15 @@ export default function About() {
               <motion.div
                 key={interest.id}
                 variants={itemVariants}
-                className="bg-[#24262e] rounded-xl p-8 border border-gray-800/50"
+                className={cn("rounded-xl p-8", theme.bg.card, theme.border.subtle)}
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 border border-primary/20">
+                <div className="w-16 h-16 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4 border border-primary/20">
                   <Icon className="text-primary" size={32} />
                 </div>
-                <h3 className="text-2xl font-semibold text-white mb-3">
+                <h3 className={cn("text-2xl font-semibold  mb-3", theme.text.heading)}>
                   {interest.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className={cn(" leading-relaxed", theme.text.body)}>
                   {interest.description}
                 </p>
               </motion.div>
@@ -341,26 +343,26 @@ export default function About() {
       {/* Call to Action */}
       <section className="py-20">
         <motion.div
-          className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-12 border border-primary/20 text-center"
+          className="bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl p-12 border border-primary/20 text-center"
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className={cn("text-3xl md:text-4xl font-bold  mb-4", theme.text.heading)}>
             Want to see what I&apos;ve built?
           </h2>
-          <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className={cn("text-lg mb-8 max-w-2xl mx-auto", theme.text.body)}>
             Check out my projects to see some of the things I&apos;ve created, or visit my GitHub to explore my code.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/projects"
               className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
               aria-label="View my projects"
             >
               View Projects
-            </a>
+            </Link>
             <a
               href="https://github.com/TheSecondComing123"
               target="_blank"

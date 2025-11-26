@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Outfit } from 'next/font/google'
 import './globals.css'
+import { cn, theme } from '@/lib/theme'
 
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], display: 'swap' })
 const outfit = Outfit({ subsets: ['latin'], display: 'swap' })
@@ -76,8 +77,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${spaceGrotesk.className} bg-[#16181d]`}>
+    <html lang="en">
+      <body className={cn(spaceGrotesk.className, theme.bg.page)}>
         {children}
       </body>
     </html>

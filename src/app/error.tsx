@@ -1,5 +1,7 @@
 'use client';
 
+import { cn, theme } from '@/lib/theme';
+
 import { useEffect } from 'react';
 
 export default function Error({
@@ -14,12 +16,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-[#16181d] flex items-center justify-center p-4">
-      <div className="bg-[#24262e] rounded-xl p-8 border border-red-500/20 max-w-lg text-center">
+    <div className={cn("min-h-screen  flex items-center justify-center p-4", theme.bg.page)}>
+      <div className={cn(" rounded-xl p-8 border border-red-500/20 max-w-lg text-center", theme.bg.card)}>
         <h2 className="text-3xl font-bold text-red-400 mb-4">
           Something went wrong
         </h2>
-        <p className="text-gray-300 mb-6">
+        <p className={cn(" mb-6", theme.text.body)}>
           We encountered an unexpected error. Please try again.
         </p>
         <button
