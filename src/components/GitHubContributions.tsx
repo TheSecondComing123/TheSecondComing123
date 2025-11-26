@@ -2,9 +2,10 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { ContributionDay } from '@/lib/github'
-import { GITHUB_YEARS } from '@/constants/github'
+import { GITHUB_YEARS, GITHUB_CONFIG, GAME_OF_LIFE } from '@/constants/github'
 import { Play, Pause, RotateCcw } from 'lucide-react'
 import { cn, theme } from '@/lib/theme'
+import { Container } from '@/components/ui/Container'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
@@ -21,12 +22,12 @@ const getMonthLabels = (data: ContributionDay[]) => {
   const months: { label: string; offset: number }[] = []
   let currentMonth = ''
   let lastOffset = -1
-  const MIN_COLUMN_SPACING = 4
+  const MIN_COLUMN_SPACING = GITHUB_CONFIG.MONTH_LABEL_MIN_SPACING
 
   data.forEach((day, index) => {
     const date = new Date(day.date)
     const month = date.toLocaleDateString('en-US', { month: 'short' })
-    const col = Math.floor(index / 7)
+    const col = Math.floor(index / GITHUB_CONFIG.GRID_ROWS)
 
     // Debugged for like 2 hours don't touch it
     if (month !== currentMonth && (lastOffset === -1 || col - lastOffset >= MIN_COLUMN_SPACING)) {
@@ -52,7 +53,7 @@ export default function GitHubContributions() {
   // Game of Life logic
   const runGameStep = useCallback(() => {
     setGameData((currentData) => {
-      const rows = 7
+      const rows = GITHUB_CONFIG.GRID_ROWS
       const cols = Math.ceil(currentData.length / rows)
       
       return currentData.map((cell, i) => {
@@ -79,11 +80,11 @@ export default function GitHubContributions() {
         
         const isAlive = cell.level > 0
         let newLevel = cell.level
-        
-        if (isAlive && (neighbors < 2 || neighbors > 3)) {
+
+        if (isAlive && (neighbors < GAME_OF_LIFE.MIN_NEIGHBORS_SURVIVE || neighbors > GAME_OF_LIFE.MAX_NEIGHBORS_SURVIVE)) {
           newLevel = 0 // Dies
-        } else if (!isAlive && neighbors === 3) {
-          newLevel = 2 // Becomes alive (medium green)
+        } else if (!isAlive && neighbors === GAME_OF_LIFE.NEIGHBORS_TO_SPAWN) {
+          newLevel = GAME_OF_LIFE.CELL_SPAWN_LEVEL // Becomes alive (medium green)
         }
         
         return { ...cell, level: newLevel }
@@ -96,7 +97,7 @@ export default function GitHubContributions() {
       if (gameData.length === 0) {
         setGameData(data)
       }
-      gameIntervalRef.current = setInterval(runGameStep, 150)
+      gameIntervalRef.current = setInterval(runGameStep, GAME_OF_LIFE.INTERVAL_MS)
     } else {
       if (gameIntervalRef.current) {
         clearInterval(gameIntervalRef.current)
@@ -128,7 +129,7 @@ export default function GitHubContributions() {
     setIsPlaying(false)
     setGameData([])
 
-    fetch(`/api/github-activity?year=${selectedYear}`, {
+    fetch(`${GITHUB_CONFIG.API_ENDPOINT}?year=${selectedYear}`, {
       signal: controller.signal
     })
       .then(res => res.json())
@@ -148,12 +149,12 @@ export default function GitHubContributions() {
   }, [selectedYear])
 
   const displayData = isPlaying || gameData.length > 0 ? gameData : data
-  const monthLabels = displayData.length > 0 ? getMonthLabels(displayData) : []
-  const totalWeeks = displayData.length > 0 ? Math.ceil(displayData.length / 7) : 0
+  const monthLabels = displayData?.length > 0 ? getMonthLabels(displayData) : []
+  const totalWeeks = displayData?.length > 0 ? Math.ceil(displayData.length / GITHUB_CONFIG.GRID_ROWS) : 0
 
   return (
     <section id="github" className="pt-4 pb-2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-4">
@@ -256,7 +257,7 @@ export default function GitHubContributions() {
               
               <div className={cn("flex items-center justify-between text-sm ", theme.text.muted)}>
                 <span className="text-yellow-400">
-                  {isPlaying ? 'Game of Life Running...' : `${totalContributions.toLocaleString()} contributions in the last year`}
+                  {isPlaying ? 'Game of Life Running...' : `${totalContributions.toLocaleString()} contributions in ${selectedYear}`}
                 </span>
                 <div className="flex items-center gap-2">
                   <span>Less</span>
@@ -280,7 +281,7 @@ export default function GitHubContributions() {
             <p className={cn(" py-8", theme.text.muted)}>Could not load contribution data.</p>
           )}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }
