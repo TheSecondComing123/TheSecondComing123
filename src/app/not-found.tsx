@@ -1,12 +1,13 @@
 import Link from 'next/link';
 
+import { cn, theme } from '@/lib/theme';
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#16181d] flex items-center justify-center p-4">
+    <div className={cn("min-h-screen  flex items-center justify-center p-4", theme.bg.page)}>
       <div className="text-center">
         <h1 className="text-9xl font-bold text-green-600 mb-4">404</h1>
-        <h2 className="text-3xl font-bold text-white mb-4">Page Not Found</h2>
-        <p className="text-gray-300 mb-8 max-w-md mx-auto">
+        <h2 className={cn("text-3xl font-bold  mb-4", theme.text.heading)}>Page Not Found</h2>
+        <p className={cn(" mb-8 max-w-md mx-auto", theme.text.body)}>
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
         <Link

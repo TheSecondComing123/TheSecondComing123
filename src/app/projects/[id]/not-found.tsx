@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
+import { cn, theme } from '@/lib/theme';
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#16181d] flex items-center justify-center px-4">
+    <div className={cn("min-h-screen  flex items-center justify-center px-4", theme.bg.page)}>
       <div className="max-w-md w-full text-center">
         <div className="mb-8">
           <div className="text-8xl font-bold text-primary mb-4">404</div>
-          <h1 className="text-3xl font-bold text-white mb-2">Project Not Found</h1>
-          <p className="text-gray-400 mb-6">
+          <h1 className={cn("text-3xl font-bold  mb-2", theme.text.heading)}>Project Not Found</h1>
+          <p className="text-gray-700 dark:text-gray-400 mb-6">
             The project you&apos;re looking for doesn&apos;t exist or may have been removed.
           </p>
         </div>

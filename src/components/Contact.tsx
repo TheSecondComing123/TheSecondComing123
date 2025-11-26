@@ -1,5 +1,7 @@
 'use client';
 
+import { cn, theme } from '@/lib/theme';
+
 import { useState } from 'react'
 
 export default function Contact() {
@@ -16,14 +18,14 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 bg-[#1a1c23]">
+    <section id="contact" className={cn("py-20 ", theme.bg.secondary)}>
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+        <h2 className={cn("text-4xl font-bold text-center mb-12 ", theme.text.heading)}>
           Get In Touch
         </h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-300">
+            <label htmlFor="name" className={cn("block text-sm font-medium mb-2 ", theme.text.body)}>
               Name
             </label>
             <input
@@ -31,12 +33,12 @@ export default function Contact() {
               id="name"
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent bg-[#1e2028] text-white"
+              className={cn("w-full px-4 py-2 border  rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent  ", theme.text.heading, theme.bg.control, theme.border.control)}
               required
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-300">
+            <label htmlFor="email" className={cn("block text-sm font-medium mb-2 ", theme.text.body)}>
               Email
             </label>
             <input
@@ -44,12 +46,12 @@ export default function Contact() {
               id="email"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent bg-[#1e2028] text-white"
+              className={cn("w-full px-4 py-2 border  rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent  ", theme.text.heading, theme.bg.control, theme.border.control)}
               required
             />
           </div>
           <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-300">
+            <label htmlFor="message" className={cn("block text-sm font-medium mb-2 ", theme.text.body)}>
               Message
             </label>
             <textarea
@@ -57,7 +59,7 @@ export default function Contact() {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={5}
-              className="w-full px-4 py-2 border border-gray-700 rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent bg-[#1e2028] text-white"
+              className={cn("w-full px-4 py-2 border  rounded-lg focus:ring-2 focus:ring-green-600 focus:border-transparent  ", theme.text.heading, theme.bg.control, theme.border.control)}
               required
             />
           </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import { cn, theme } from '@/lib/theme';
+
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 
 interface Props {
@@ -34,19 +36,19 @@ export default class ErrorBoundary extends Component<Props, State> {
 
       return (
         <div className="min-h-[400px] flex items-center justify-center p-8">
-          <div className="bg-[#24262e] rounded-xl p-8 border border-red-500/20 max-w-lg">
+          <div className={cn(" rounded-xl p-8 border border-red-500/20 max-w-lg", theme.bg.card)}>
             <h2 className="text-2xl font-bold text-red-400 mb-4">
               Something went wrong
             </h2>
-            <p className="text-gray-300 mb-4">
+            <p className={cn(" mb-4", theme.text.body)}>
               We encountered an unexpected error. Please try refreshing the page.
             </p>
             {this.state.error && (
-              <details className="text-sm text-gray-400 mb-4">
-                <summary className="cursor-pointer hover:text-gray-300">
+              <details className={cn("text-sm  mb-4", theme.text.muted)}>
+                <summary className={cn("cursor-pointer ", theme.hover.text)}>
                   Error details
                 </summary>
-                <pre className="mt-2 p-4 bg-[#16181d] rounded overflow-auto">
+                <pre className={cn("mt-2 p-4  rounded overflow-auto", theme.bg.page)}>
                   {this.state.error.message}
                 </pre>
               </details>
