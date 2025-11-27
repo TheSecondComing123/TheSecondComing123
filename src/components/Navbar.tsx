@@ -45,6 +45,7 @@ export default function Navbar() {
             <Link href="/" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to home page">Home</Link>
             <Link href="/about" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to about page">About</Link>
             <Link href="/projects" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to projects page">Projects</Link>
+            <Link href="/#contact" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to contact form">Contact</Link>
             <button
               type="button"
               onClick={toggleTheme}
