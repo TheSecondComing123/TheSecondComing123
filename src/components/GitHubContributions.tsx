@@ -6,6 +6,7 @@ import { GITHUB_YEARS, GITHUB_CONFIG, GAME_OF_LIFE } from '@/constants/github'
 import { Play, Pause, RotateCcw } from 'lucide-react'
 import { cn, theme } from '@/lib/theme'
 import { Container } from '@/components/ui/Container'
+import { Skeleton } from '@/components/ui/skeleton'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
@@ -153,7 +154,7 @@ export default function GitHubContributions() {
   const totalWeeks = displayData?.length > 0 ? Math.ceil(displayData.length / GITHUB_CONFIG.GRID_ROWS) : 0
 
   return (
-    <section id="github" className="pt-4 pb-2">
+    <section id="github" className="py-16 md:py-20 lg:py-24">
       <Container>
         <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
           <div className="flex items-center justify-between mb-4">
@@ -204,7 +205,47 @@ export default function GitHubContributions() {
           </div>
           
           {isLoading ? (
-            <p className={cn(" py-8", theme.font.body, theme.text.muted)}>Loading contributions...</p>
+            <div className="mb-4">
+              <div className="flex gap-3">
+                {/* Skeleton day labels */}
+                <div className="grid grid-rows-7 gap-1 pt-5">
+                  <Skeleton className="h-3 w-8" />
+                  <div></div>
+                  <Skeleton className="h-3 w-8" />
+                  <div></div>
+                  <Skeleton className="h-3 w-8" />
+                  <div></div>
+                  <div></div>
+                </div>
+
+                {/* Skeleton contribution grid */}
+                <div className="flex-1">
+                  <div className="h-4 mb-1">
+                    <div className="flex gap-4">
+                      {Array.from({ length: 12 }).map((_, i) => (
+                        <Skeleton key={i} className="h-3 w-12" />
+                      ))}
+                    </div>
+                  </div>
+                  <div className="grid grid-rows-7 grid-flow-col gap-1">
+                    {Array.from({ length: 7 * 52 }).map((_, i) => (
+                      <Skeleton key={i} className="w-2.5 h-2.5 rounded-sm" />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Skeleton legend */}
+              <div className="flex items-center justify-end gap-2 mt-2">
+                <Skeleton className="h-3 w-8" />
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Skeleton key={i} className="w-2.5 h-2.5 rounded-sm" />
+                  ))}
+                </div>
+                <Skeleton className="h-3 w-8" />
+              </div>
+            </div>
           ) : displayData.length > 0 ? (
             <>
               <div className="mb-4 overflow-x-hidden">

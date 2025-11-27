@@ -7,7 +7,7 @@ import { Container } from '@/components/ui/Container';
 
 export default function Hero() {
   return (
-    <section className={cn('pt-32 pb-0 flex items-center justify-center', theme.bg.page)}>
+    <section className={cn('pt-24 pb-0 flex items-center justify-center', theme.bg.page)}>
       <Container>
         <motion.div
           className="text-center"

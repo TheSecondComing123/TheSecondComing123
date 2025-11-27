@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { cn, theme } from '@/lib/theme';
+import { Button } from '@/components/ui/button';
 export default function NotFound() {
   return (
     <div className={cn("min-h-screen  flex items-center justify-center p-4", theme.bg.page)}>
@@ -10,12 +11,9 @@ export default function NotFound() {
         <p className={cn(" mb-8 max-w-md mx-auto", theme.font.body, theme.text.body)}>
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <Link
-          href="/"
-          className={cn("inline-block px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium", theme.font.body)}
-        >
-          Go Home
-        </Link>
+        <Button asChild size="lg" className={theme.font.body}>
+          <Link href="/">Go Home</Link>
+        </Button>
       </div>
     </div>
   );

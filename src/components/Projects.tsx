@@ -10,7 +10,7 @@ import { ICON_SIZE } from '@/constants/ui';
 import { projectsData } from '@/constants/projects';
 import { Container } from '@/components/ui/Container';
 import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
-import { Card } from '@/components/ui/Card';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 
 export default function Projects() {
   return (
@@ -38,7 +38,7 @@ export default function Projects() {
         animate="visible"
       >
         {projectsData.map((project) => (
-          <Card
+          <ProjectCard
             key={project.id}
             icon={<project.icon className="text-primary" size={ICON_SIZE.SM} />}
             iconSize="SM"
