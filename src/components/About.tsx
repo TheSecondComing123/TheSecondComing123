@@ -11,7 +11,8 @@ import { ICON_SIZE } from '@/constants/ui';
 import { cn, theme } from '@/lib/theme';
 import { Container } from '@/components/ui/Container';
 import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
-import { Card } from '@/components/ui/Card';
+import { ProjectCard } from '@/components/ui/ProjectCard';
+import { Button } from '@/components/ui/button';
 
 const skills = [
   {
@@ -83,8 +84,8 @@ export default function About() {
   return (
     <Container>
       {/* Hero Section */}
-      <section className="py-20">
-        <AnimatedHeading as="h1" className="text-5xl md:text-7xl font-bold mb-6" delay={ANIMATION_DELAY.SHORT}>
+      <section className="py-16 md:py-20 lg:py-24">
+        <AnimatedHeading as="h1" className="text-5xl md:text-7xl font-bold mb-8" delay={ANIMATION_DELAY.SHORT}>
           About Me
         </AnimatedHeading>
         <motion.div
@@ -106,7 +107,7 @@ export default function About() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20 lg:py-24">
         <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
           Skills & Technologies
         </AnimatedHeading>
@@ -118,7 +119,7 @@ export default function About() {
           viewport={VIEWPORT_CONFIG.SMALL_AMOUNT}
         >
           {skills.map((skill) => (
-            <Card
+            <ProjectCard
               key={skill.id}
               icon={<skill.icon className="text-primary" size={ICON_SIZE.MD} />}
               iconSize="MD"
@@ -131,7 +132,7 @@ export default function About() {
       </section>
 
       {/* Competitive Programming Journey */}
-      <section className="py-20">
+      <section className="py-16 md:py-20 lg:py-24">
         <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-6">
           Competitive Programming Journey
         </AnimatedHeading>
@@ -155,11 +156,11 @@ export default function About() {
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-linear-to-b from-primary/20 via-primary/40 to-primary/20 -translate-x-1/2 shadow-[0_0_15px_rgba(74,222,128,0.3)]" />
 
           {/* Timeline items */}
-          <div className="space-y-8 md:space-y-12">
+          <div className="space-y-6 md:space-y-12">
             {/* Item 1 - ACSL (Left) */}
             <motion.div
               variants={itemVariants}
-              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center"
             >
               {/* Left content */}
               <div className="md:text-right">
@@ -189,7 +190,7 @@ export default function About() {
             {/* Item 2 - USACO (Right) */}
             <motion.div
               variants={itemVariants}
-              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center"
             >
               {/* Left spacer */}
               <div className="hidden md:block" />
@@ -219,7 +220,7 @@ export default function About() {
             {/* Item 3 - TJIOI (Left) */}
             <motion.div
               variants={itemVariants}
-              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center"
             >
               {/* Left content */}
               <div className="md:text-right">
@@ -249,7 +250,7 @@ export default function About() {
             {/* Item 4 - CalICO (Right) */}
             <motion.div
               variants={itemVariants}
-              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-8 items-center"
+              className="relative grid md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-8 items-center"
             >
               {/* Left spacer */}
               <div className="hidden md:block" />
@@ -280,7 +281,7 @@ export default function About() {
       </section>
 
       {/* Interests Section */}
-      <section className="py-20">
+      <section className="py-16 md:py-20 lg:py-24">
         <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
           What I Love Doing
         </AnimatedHeading>
@@ -292,21 +293,20 @@ export default function About() {
           viewport={VIEWPORT_CONFIG.SMALL_AMOUNT}
         >
           {interests.map((interest) => (
-            <Card
+            <ProjectCard
               key={interest.id}
               icon={<interest.icon className="text-primary" size={ICON_SIZE.MD} />}
               iconSize="MD"
               title={interest.title}
               description={interest.description}
               enableHover={false}
-              className="p-8"
             />
           ))}
         </motion.div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-20">
+      <section className="py-16 md:py-20 lg:py-24">
         <motion.div
           className="bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl p-12 border border-primary/20 text-center"
           initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
@@ -321,22 +321,20 @@ export default function About() {
             Check out my projects to see some of the things I&apos;ve created, or visit my GitHub to explore my code.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/projects"
-              className="px-8 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-              aria-label="View my projects"
-            >
-              View Projects
-            </Link>
-            <a
-              href="https://github.com/TheSecondComing123"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 border-2 border-primary text-primary rounded-lg font-semibold hover:bg-primary/10 transition-colors"
-              aria-label="Visit my GitHub profile"
-            >
-              Visit GitHub
-            </a>
+            <Button asChild size="lg" aria-label="View my projects">
+              <Link href="/projects">
+                View Projects
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" aria-label="Visit my GitHub profile">
+              <a
+                href="https://github.com/TheSecondComing123"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Visit GitHub
+              </a>
+            </Button>
           </div>
         </motion.div>
       </section>

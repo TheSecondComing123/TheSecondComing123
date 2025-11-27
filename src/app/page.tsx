@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AnimatedSection from '@/components/AnimatedSection'
 import ErrorBoundary from '@/components/ErrorBoundary'
+import { Separator } from '@/components/ui/separator'
 
 export default function Home() {
   return (
@@ -25,9 +26,7 @@ export default function Home() {
         <AnimatedSection delay={0.2}>
           <Contact />
         </AnimatedSection>
-        <AnimatedSection delay={0.2}>
-          <Footer />
-        </AnimatedSection>
+        <Footer />
       </main>
     </>
   )

@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <nav className={cn("fixed w-full z-50 border-b", theme.bg.page, theme.border.default)} aria-label="Main navigation">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className={cn("text-2xl font-bold text-primary", theme.font.heading)} aria-label="Alan Bagel - Home">
             Alan Bagel

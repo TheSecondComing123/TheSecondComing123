@@ -8,7 +8,7 @@ import { ICON_SIZE } from '@/constants/ui';
 import { cn, theme } from '@/lib/theme';
 import { Container } from '@/components/ui/Container';
 import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
-import { Card } from '@/components/ui/Card';
+import { ProjectCard } from '@/components/ui/ProjectCard';
 const competitions = [
   {
     id: 'acsl-2024',
@@ -50,7 +50,7 @@ const competitions = [
 
 export default function Competitions() {
   return (
-    <section id="competitions" className={cn("py-20 ", theme.bg.page)}>
+    <section id="competitions" className={cn("py-16 md:py-20 lg:py-24", theme.bg.page)}>
       <Container>
         <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
           Competitive Programming
@@ -63,7 +63,7 @@ export default function Competitions() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {competitions.map((comp) => (
-            <Card
+            <ProjectCard
               key={comp.id}
               icon={<comp.icon className="text-primary" size={ICON_SIZE.MD} />}
               iconSize="MD"

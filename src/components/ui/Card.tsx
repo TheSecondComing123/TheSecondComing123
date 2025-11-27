@@ -1,135 +1,76 @@
-'use client';
+import * as React from "react"
 
-import { ReactNode } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { cn, theme } from '@/lib/theme';
-import { IconBox } from './IconBox';
-import { cardVariants } from '@/constants/animations';
-import { type IconContainerSize } from '@/constants/ui';
+import { cn } from "@/lib/utils"
 
-interface CardProps {
-  /** Icon element to display (optional) */
-  icon?: ReactNode;
-  /** Size of icon container (sm, md, lg) */
-  iconSize?: IconContainerSize;
-  /** Card title */
-  title: string;
-  /** Subtitle (optional - shown in primary color) */
-  subtitle?: string;
-  /** Card description */
-  description: string;
-  /** Additional metadata (optional - shown in muted text) */
-  metadata?: string;
-  /** Link href (optional - makes card clickable) */
-  href?: string;
-  /** onClick handler (optional) */
-  onClick?: () => void;
-  /** Additional className for customization */
-  className?: string;
-  /** Whether to show hover effects */
-  enableHover?: boolean;
-}
+const Card = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn(
+      "rounded-xl border bg-card text-card-foreground",
+      className
+    )}
+    {...props}
+  />
+))
+Card.displayName = "Card"
 
-/**
- * Card Component
- *
- * Flexible card component that consolidates patterns used in:
- * - Competitions (with icon, title, rank, description)
- * - Projects (with icon, title, description, period)
- * - About (skills and interests cards)
- *
- * @example
- * // Competition card
- * <Card
- *   icon={<Trophy className="text-primary" size={32} />}
- *   iconSize="MD"
- *   title="ACSL"
- *   subtitle="National Silver"
- *   description="American Computer Science League"
- *   metadata="2024"
- *   href="/competitions/acsl"
- * />
- *
- * @example
- * // Project card
- * <Card
- *   icon={<Gamepad2 className="text-primary" size={28} />}
- *   iconSize="SM"
- *   title="2121"
- *   description="A game I made when I was 7"
- *   metadata="Early"
- * />
- */
-export function Card({
-  icon,
-  iconSize = 'MD',
-  title,
-  subtitle,
-  description,
-  metadata,
-  href,
-  onClick,
-  className = '',
-  enableHover = true
-}: CardProps) {
-  const cardContent = (
-    <motion.div
-      variants={cardVariants}
-      className={cn(
-        'h-full flex flex-col',
-        'rounded-xl p-6 border',
-        'transition-all duration-300 group',
-        enableHover && 'hover:border-primary/30',
-        onClick && 'cursor-pointer',
-        theme.bg.card,
-        theme.border.subtle,
-        className
-      )}
-      onClick={onClick}
-    >
-      <div className="flex items-start gap-4 flex-1">
-        {icon && <IconBox icon={icon} size={iconSize} />}
+const CardHeader = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex flex-col space-y-2 p-6", className)}
+    {...props}
+  />
+))
+CardHeader.displayName = "CardHeader"
 
-        <div className="flex-1 flex flex-col">
-          <h3
-            className={cn(
-              'text-xl font-bold transition-colors',
-              enableHover && 'group-hover:text-primary',
-              theme.font.heading,
-              theme.text.heading
-            )}
-          >
-            {title}
-          </h3>
+const CardTitle = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("font-semibold leading-none tracking-tight", className)}
+    {...props}
+  />
+))
+CardTitle.displayName = "CardTitle"
 
-          {subtitle && (
-            <p className={cn('text-primary font-medium mt-1', theme.font.body)}>
-              {subtitle}
-            </p>
-          )}
+const CardDescription = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("text-sm text-muted-foreground", className)}
+    {...props}
+  />
+))
+CardDescription.displayName = "CardDescription"
 
-          {metadata && (
-            <p className={cn('text-xs uppercase tracking-wide mt-1', theme.font.body, theme.text.muted)}>
-              {metadata}
-            </p>
-          )}
+const CardContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} className={cn("p-6 pt-4", className)} {...props} />
+))
+CardContent.displayName = "CardContent"
 
-          <p className={cn('mt-2', theme.font.body, theme.text.muted)}>
-            {description}
-          </p>
-        </div>
-      </div>
-    </motion.div>
-  );
+const CardFooter = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={cn("flex items-center p-6 pt-0", className)}
+    {...props}
+  />
+))
+CardFooter.displayName = "CardFooter"
 
-  if (href) {
-    return (
-      <Link href={href} className="block h-full">
-        {cardContent}
-      </Link>
-    );
-  }
-
-  return cardContent;
-}
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }

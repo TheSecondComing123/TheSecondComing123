@@ -65,7 +65,7 @@ export class RateLimiter {
    */
   cleanup(): void {
     const now = Date.now();
-    for (const [key, entry] of this.requests.entries()) {
+    for (const [key, entry] of Array.from(this.requests.entries())) {
       if (now > entry.resetTime) {
         this.requests.delete(key);
       }

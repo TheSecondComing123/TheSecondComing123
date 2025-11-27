@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Space_Grotesk, Outfit } from 'next/font/google'
 import './globals.css'
 import { cn, theme } from '@/lib/theme'
+import { Toaster } from '@/components/ui/sonner'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -91,6 +92,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(spaceGrotesk.variable, outfit.variable, theme.bg.page)}>
         {children}
+        <Toaster />
       </body>
     </html>
   )

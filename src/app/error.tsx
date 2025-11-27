@@ -1,7 +1,7 @@
 'use client';
 
 import { cn, theme } from '@/lib/theme';
-
+import { Button } from '@/components/ui/button';
 import { useEffect } from 'react';
 
 export default function Error({
@@ -24,12 +24,9 @@ export default function Error({
         <p className={cn(" mb-6", theme.font.body, theme.text.body)}>
           We encountered an unexpected error. Please try again.
         </p>
-        <button
-          onClick={reset}
-          className={cn("px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors font-medium", theme.font.body)}
-        >
+        <Button onClick={reset} size="lg" className={theme.font.body}>
           Try Again
-        </button>
+        </Button>
       </div>
     </div>
   );
