@@ -3,10 +3,14 @@
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { ContributionDay } from '@/lib/github'
 import { GITHUB_YEARS, GITHUB_CONFIG, GAME_OF_LIFE } from '@/constants/github'
-import { Play, Pause, RotateCcw } from 'lucide-react'
+import { Play, Pause, RotateCcw, AlertCircle } from 'lucide-react'
 import { cn, theme } from '@/lib/theme'
 import { Container } from '@/components/ui/Container'
 import { Skeleton } from '@/components/ui/skeleton'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
@@ -162,46 +166,52 @@ export default function GitHubContributions() {
               <h2 className={cn("text-2xl font-bold ", theme.font.heading, theme.text.heading)}>
                 Contribution Graph
               </h2>
-              <div className={cn("flex items-center gap-2 p-1 rounded-lg border", theme.border.control, theme.bg.tertiary)}>
-                <button
-                  onClick={toggleGame}
-                  className={`p-1.5 rounded-md transition-colors ${
-                    isPlaying
-                      ? 'bg-green-600 text-white'
-                      : cn(theme.text.muted, theme.hover.text, theme.hover.bg)
-                  }`}
-                  title={isPlaying ? "Pause Game of Life" : "Play Game of Life"}
-                >
-                  {isPlaying ? <Pause size={16} /> : <Play size={16} />}
-                </button>
-                {(isPlaying || gameData.length > 0) && (
-                  <button
-                    onClick={resetGame}
-                    className={cn("p-1.5 rounded-md transition-colors", theme.text.muted, theme.hover.text, theme.hover.bg)}
-                    title="Reset to GitHub Data"
-                  >
-                    <RotateCcw size={16} />
-                  </button>
-                )}
-              </div>
+              <TooltipProvider>
+                <div className={cn("flex items-center gap-2 p-1 rounded-lg border", theme.border.control, theme.bg.tertiary)}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={toggleGame}
+                        className={cn("h-8 w-8", isPlaying && "bg-green-600 text-white hover:bg-green-700")}
+                      >
+                        {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{isPlaying ? "Pause" : "Play"} Conway's Game of Life</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  {(isPlaying || gameData.length > 0) && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={resetGame}
+                          className="h-8 w-8"
+                        >
+                          <RotateCcw className="h-4 w-4" />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Reset to GitHub data</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  )}
+                </div>
+              </TooltipProvider>
             </div>
-            <div className="flex gap-2">
-              {years.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-3 py-1.5 rounded-md text-sm font-medium ${
-                    selectedYear === year
-                      ? 'bg-green-600 text-white'
-                      : cn("bg-transparent", theme.text.muted, theme.hover.text)
-                  }`}
-                  aria-label={`View ${year} contributions`}
-                  aria-current={selectedYear === year ? "true" : undefined}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
+            <Tabs value={selectedYear} onValueChange={setSelectedYear}>
+              <TabsList>
+                {years.map((year) => (
+                  <TabsTrigger key={year} value={year}>
+                    {year}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
           </div>
           
           {isLoading ? (
@@ -319,7 +329,13 @@ export default function GitHubContributions() {
               </div>
             </>
           ) : (
-            <p className={cn(" py-8", theme.font.body, theme.text.muted)}>Could not load contribution data.</p>
+            <Alert variant="destructive" className="my-8">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                Could not load contribution data. Please try again later.
+              </AlertDescription>
+            </Alert>
           )}
         </div>
       </Container>
