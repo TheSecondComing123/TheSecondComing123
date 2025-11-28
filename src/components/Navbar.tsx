@@ -3,7 +3,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Sun, Moon } from 'lucide-react';
-
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import { Toggle } from '@/components/ui/toggle';
 import { cn, theme } from '@/lib/theme';
 export default function Navbar() {
   const [colorMode, setColorMode] = useState<'light' | 'dark'>('dark');
@@ -30,10 +37,6 @@ export default function Navbar() {
     }
   }, [colorMode, mounted]);
 
-  const toggleTheme = () => {
-    setColorMode((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
   return (
     <nav className={cn("fixed w-full z-50 border-b", theme.bg.page, theme.border.default)} aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,27 +44,47 @@ export default function Navbar() {
           <Link href="/" className={cn("text-2xl font-bold text-primary", theme.font.heading)} aria-label="Alan Bagel - Home">
             Alan Bagel
           </Link>
-          <div className="flex items-center space-x-8">
-            <Link href="/" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to home page">Home</Link>
-            <Link href="/about" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to about page">About</Link>
-            <Link href="/projects" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to projects page">Projects</Link>
-            <Link href="/#contact" className={cn(theme.font.body, theme.text.heading)} aria-label="Navigate to contact form">Contact</Link>
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className={cn("p-2 rounded-lg hover:bg-primary/10 transition-all duration-300 hover:scale-110", theme.bg.secondary)}
+          <div className="flex items-center gap-4">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/" className={navigationMenuTriggerStyle()}>
+                    Home
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/about" className={navigationMenuTriggerStyle()}>
+                    About
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/projects" className={navigationMenuTriggerStyle()}>
+                    Projects
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuLink href="/#contact" className={navigationMenuTriggerStyle()}>
+                    Contact
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            <Toggle
+              pressed={colorMode === 'dark'}
+              onPressedChange={(pressed) => setColorMode(pressed ? 'dark' : 'light')}
               aria-label={`Switch to ${colorMode === 'dark' ? 'light' : 'dark'} mode`}
+              className="transition-transform duration-300 hover:scale-110"
             >
               {mounted ? (
                 colorMode === 'dark' ? (
-                  <Sun className="w-5 h-5 text-primary" />
+                  <Sun className="h-5 w-5 text-primary" />
                 ) : (
-                  <Moon className="w-5 h-5 text-primary" />
+                  <Moon className="h-5 w-5 text-primary" />
                 )
               ) : (
-                <Sun className="w-5 h-5 text-primary" />
+                <Sun className="h-5 w-5 text-primary" />
               )}
-            </button>
+            </Toggle>
           </div>
         </div>
       </div>

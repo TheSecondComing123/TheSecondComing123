@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { IconBox } from '@/components/ui/IconBox';
+import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/theme';
 import { cardVariants } from '@/constants/animations';
 import type { IconContainerSize } from '@/constants/ui';
@@ -16,6 +17,7 @@ interface ProjectCardProps {
   subtitle?: string;
   description: string;
   metadata?: string;
+  technologies?: string[];
   href?: string;
   onClick?: () => void;
   className?: string;
@@ -39,6 +41,7 @@ export function ProjectCard({
   subtitle,
   description,
   metadata,
+  technologies,
   href,
   onClick,
   className,
@@ -74,9 +77,20 @@ export function ProjectCard({
         </div>
       </CardHeader>
       <CardContent className="px-6 pb-6 pt-4 flex-1 flex flex-col justify-between">
-        <CardDescription className="text-base">
-          {description}
-        </CardDescription>
+        <div className="space-y-3">
+          <CardDescription className="text-base">
+            {description}
+          </CardDescription>
+          {technologies && technologies.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {technologies.map((tech) => (
+                <Badge key={tech} variant="secondary">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          )}
+        </div>
         {metadata && (
           <p className="text-xs text-muted-foreground uppercase mt-4">
             {metadata}

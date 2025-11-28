@@ -45,6 +45,7 @@ export default function Projects() {
             title={project.title}
             description={project.description}
             metadata={project.period}
+            technologies={project.technologies}
             href={`/projects/${project.id}`}
           />
         ))}

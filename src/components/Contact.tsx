@@ -79,7 +79,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className={cn(SECTION_SPACING.responsive, theme.bg.secondary)}>
+    <section id="contact" className={cn(SECTION_SPACING.responsive, theme.bg.page)}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="border-primary/20 shadow-xl relative overflow-hidden">
           {/* Background gradient */}
