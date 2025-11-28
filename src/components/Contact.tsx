@@ -82,12 +82,9 @@ export default function Contact() {
     <section id="contact" className={cn(SECTION_SPACING.responsive, theme.bg.page)}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="border-primary/20 shadow-xl relative overflow-hidden">
-          {/* Background gradient */}
-          <div className="absolute inset-0 bg-linear-to-r from-primary/10 via-transparent to-primary/10 pointer-events-none" />
-
           <CardContent className="relative p-8 md:p-10 lg:p-12">
-            {/* Gradient accent */}
-            <div className="w-20 h-1 bg-linear-to-r from-primary to-green-500 mx-auto mb-6" />
+            {/* Accent line (subtle solid) */}
+            <div className="w-20 h-1 bg-primary mx-auto mb-6 rounded-full opacity-90" />
 
             {/* Heading */}
             <h2
