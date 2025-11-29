@@ -6,14 +6,14 @@ import { Toaster } from '@/components/ui/sonner'
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
-  weight: ['600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-space-grotesk'
 })
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
   variable: '--font-outfit'
 })
