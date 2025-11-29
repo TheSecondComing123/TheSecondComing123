@@ -91,23 +91,23 @@ export const theme = {
    * GitHub contribution graph colors - theme-aware levels
    */
   github: {
-    /** No contributions - light gray in light mode, very dark green in dark mode */
-    level0: 'bg-gray-200 dark:bg-transparent',
+    /** No contributions - light gray in light mode, subtle dark green in dark mode */
+    level0: 'bg-gray-200 dark:bg-green-950/40',
 
-    /** Few contributions - light green in light mode, dark green in dark mode */
-    level1: 'bg-green-200 dark:bg-green-800',
+    /** Few contributions - light green in light mode, darker green in dark mode */
+    level1: 'bg-green-200 dark:bg-green-900',
 
-    /** Some contributions - medium-light green in light mode, medium-dark green in dark mode */
+    /** Some contributions - medium-light green in light mode, medium green in dark mode */
     level2: 'bg-green-400 dark:bg-green-700',
 
-    /** Many contributions - medium green (same in both modes) */
-    level3: 'bg-green-600 dark:bg-green-600',
+    /** Many contributions - medium green in light mode, brighter green in dark mode */
+    level3: 'bg-green-600 dark:bg-green-500',
 
-    /** Most contributions - darker green in light mode, bright green in dark mode */
-    level4: 'bg-green-700 dark:bg-green-500',
+    /** Most contributions - darker green in light mode, brightest green in dark mode */
+    level4: 'bg-green-700 dark:bg-green-400',
 
     /** Grid border color */
-    border: 'border-gray-300 dark:border-green-900/30',
+    border: 'border-gray-300/50 dark:border-green-900/40',
   },
 
   /**

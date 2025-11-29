@@ -6,10 +6,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { toast } from 'sonner';
-import { User, Mail, MessageSquare, Send, Loader2 } from 'lucide-react';
+import { User, Mail, MessageSquare, Send, Loader2, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -20,7 +20,11 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { SECTION_SPACING } from '@/constants/spacing';
+import { Container } from '@/components/ui/Container';
+import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
+import { SECTION_SPACING, FORM_SPACING, HEADING_MARGIN } from '@/constants/spacing';
+import { ANIMATION_DELAY, ANIMATION_OFFSET, VIEWPORT_CONFIG } from '@/constants/animation-values';
+import { EASE_CURVE } from '@/constants/animations';
 
 // Zod validation schema
 const contactFormSchema = z.object({
@@ -36,6 +40,32 @@ const contactFormSchema = z.object({
 });
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const formContainerVariants = {
+  hidden: { opacity: 0, y: ANIMATION_OFFSET.Y_LARGE },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      delay: ANIMATION_DELAY.MEDIUM,
+      ease: EASE_CURVE,
+    },
+  },
+};
+
+const inputVariants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: ANIMATION_DELAY.SHORT + i * 0.05,
+      ease: EASE_CURVE,
+    },
+  }),
+};
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -79,72 +109,89 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className={cn(SECTION_SPACING.responsive, theme.bg.page)}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="border-primary/20 shadow-xl relative overflow-hidden">
-          <CardContent className="relative p-8 md:p-10 lg:p-12">
-            {/* Accent line (subtle solid) */}
-            <div className="w-20 h-1 bg-primary mx-auto mb-6 rounded-full opacity-90" />
+    <section
+      id="contact"
+      className={cn(SECTION_SPACING.responsive, theme.bg.page)}
+    >
+      <Container>
+        {/* Header Section */}
+        <div className="text-center mb-12 md:mb-16">
+          <AnimatedHeading
+            as="h2"
+            scroll
+            className="text-4xl md:text-5xl font-bold mb-4"
+          >
+            Get In Touch
+          </AnimatedHeading>
+          <motion.p
+            className={cn('text-lg max-w-2xl mx-auto', theme.text.body)}
+            initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={VIEWPORT_CONFIG.DEFAULT}
+            transition={{
+              duration: 0.7,
+              delay: ANIMATION_DELAY.MEDIUM,
+              ease: EASE_CURVE,
+            }}
+          >
+            Have a question or want to collaborate? I&apos;d love to hear from you. Send me a message and I&apos;ll get back to you as soon as possible.
+          </motion.p>
+        </div>
 
-            {/* Heading */}
-            <h2
-              className={cn(
-                'text-4xl font-bold text-center mb-3',
-                theme.font.heading,
-                theme.text.heading
-              )}
-            >
-              Get In Touch
-            </h2>
-
-            {/* Description */}
-            <p
-              className={cn(
-                'text-center mb-8 max-w-2xl mx-auto',
-                theme.font.body,
-                theme.text.body
-              )}
-            >
-              Have a question or want to work together? Feel free to reach out!
-            </p>
-
-            {/* Form */}
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                {/* Name + Email Grid */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Name Field */}
+        {/* Form Card */}
+        <motion.div
+          className={cn(
+            'max-w-2xl mx-auto rounded-2xl p-8 md:p-10 lg:p-12',
+            'border border-primary/20',
+            theme.bg.card
+          )}
+          variants={formContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT_CONFIG.DEFAULT}
+        >
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className={FORM_SPACING.fieldGap}>
+              {/* Name + Email Grid */}
+              <motion.div
+                className="grid md:grid-cols-2 gap-6"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+                  },
+                }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEWPORT_CONFIG.DEFAULT}
+              >
+                {/* Name Field */}
+                <motion.div variants={inputVariants} custom={0}>
                   <FormField
                     control={form.control}
                     name="name"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Name</FormLabel>
+                        <FormLabel className={cn('block mb-2 font-medium', theme.text.heading)}>
+                          Name
+                        </FormLabel>
                         <FormControl>
                           <div className="relative">
-                            <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                            <Input placeholder="Your name" className="pl-10" {...field} />
-                          </div>
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-
-                  {/* Email Field */}
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Email</FormLabel>
-                        <FormControl>
-                          <div className="relative">
-                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                            <User className={cn(
+                              'absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none',
+                              'text-primary/60'
+                            )} />
                             <Input
-                              type="email"
-                              placeholder="your.email@example.com"
-                              className="pl-10"
+                              placeholder="Your name"
+                              className={cn(
+                                'pl-10 h-11 rounded-lg',
+                                'border border-primary/20',
+                                theme.bg.control,
+                                theme.text.body,
+                                'transition-all duration-200',
+                                'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
+                              )}
                               {...field}
                             />
                           </div>
@@ -153,22 +200,84 @@ export default function Contact() {
                       </FormItem>
                     )}
                   />
-                </div>
+                </motion.div>
 
-                {/* Message Field */}
+                {/* Email Field */}
+                <motion.div variants={inputVariants} custom={1}>
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className={cn('block mb-2 font-medium', theme.text.heading)}>
+                          Email
+                        </FormLabel>
+                        <FormControl>
+                          <div className="relative">
+                            <Mail className={cn(
+                              'absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none',
+                              'text-primary/60'
+                            )} />
+                            <Input
+                              type="email"
+                              placeholder="your.email@example.com"
+                              className={cn(
+                                'pl-10 h-11 rounded-lg',
+                                'border border-primary/20',
+                                theme.bg.control,
+                                theme.text.body,
+                                'transition-all duration-200',
+                                'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
+                              )}
+                              {...field}
+                            />
+                          </div>
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </motion.div>
+              </motion.div>
+
+              {/* Message Field */}
+              <motion.div
+                variants={inputVariants}
+                custom={2}
+                initial="hidden"
+                whileInView="visible"
+                viewport={VIEWPORT_CONFIG.DEFAULT}
+                transition={{
+                  duration: 0.5,
+                  delay: ANIMATION_DELAY.SHORT + 0.1,
+                  ease: EASE_CURVE,
+                }}
+              >
                 <FormField
                   control={form.control}
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Message</FormLabel>
+                      <FormLabel className={cn('block mb-2 font-medium', theme.text.heading)}>
+                        Message
+                      </FormLabel>
                       <FormControl>
                         <div className="relative">
-                          <MessageSquare className="absolute left-3 top-3 w-4 h-4 text-muted-foreground pointer-events-none" />
+                          <MessageSquare className={cn(
+                            'absolute left-3 top-3 w-4 h-4 pointer-events-none',
+                            'text-primary/60'
+                          )} />
                           <Textarea
-                            placeholder="Your message (at least 10 characters)"
+                            placeholder="Your message (at least 10 characters)..."
                             rows={5}
-                            className="pl-10"
+                            className={cn(
+                              'pl-10 rounded-lg resize-none',
+                              'border border-primary/20',
+                              theme.bg.control,
+                              theme.text.body,
+                              'transition-all duration-200',
+                              'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
+                            )}
                             {...field}
                           />
                         </div>
@@ -177,9 +286,32 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
+              </motion.div>
 
-                {/* Submit Button */}
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full mt-8 gap-2">
+              {/* Submit Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={VIEWPORT_CONFIG.DEFAULT}
+                transition={{
+                  duration: 0.5,
+                  delay: ANIMATION_DELAY.SHORT + 0.15,
+                  ease: EASE_CURVE,
+                }}
+                className="pt-4"
+              >
+                <Button
+                  type="submit"
+                  size="lg"
+                  disabled={isSubmitting}
+                  className={cn(
+                    'w-full gap-2 font-semibold rounded-lg h-11',
+                    'bg-primary hover:bg-primary/90 text-white',
+                    'transition-all duration-200',
+                    'disabled:opacity-50 disabled:cursor-not-allowed',
+                    isSubmitting && 'opacity-50'
+                  )}
+                >
                   {isSubmitting ? (
                     <>
                       <Loader2 className="w-5 h-5 animate-spin" />
@@ -187,16 +319,41 @@ export default function Contact() {
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
                       Send Message
+                      <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                     </>
                   )}
                 </Button>
-              </form>
-            </Form>
-          </CardContent>
-        </Card>
-      </div>
+              </motion.div>
+            </form>
+          </Form>
+        </motion.div>
+
+        {/* Alternative Contact Methods */}
+        <motion.div
+          className="mt-12 md:mt-16 text-center"
+          initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={VIEWPORT_CONFIG.DEFAULT}
+          transition={{
+            duration: 0.7,
+            delay: ANIMATION_DELAY.LONG,
+            ease: EASE_CURVE,
+          }}
+        >
+          <p className={cn('text-sm', theme.text.muted)}>
+            Or reach out on{' '}
+            <a
+              href="https://github.com/TheSecondComing123"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
+            >
+              GitHub
+            </a>
+          </p>
+        </motion.div>
+      </Container>
     </section>
   );
 }
