@@ -16,7 +16,7 @@ export default function Hero() {
           animate="visible"
         >
           <motion.h1
-            className={cn('text-5xl md:text-7xl font-bold mb-6', theme.font.heading, theme.text.heading)}
+            className={cn('text-5xl md:text-7xl mb-6', theme.font.display, theme.text.heading)}
             variants={itemVariants}
           >
             Hi, I&apos;m <span className="text-primary">Alan Bagel</span>

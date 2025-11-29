@@ -114,11 +114,38 @@ export const theme = {
    * Font family variants - semantic font application
    */
   font: {
-    /** Heading font - Space Grotesk for H1-H6, display text, logos */
+    /** Heading font - Space Grotesk 600 for H1-H2 */
     heading: 'font-heading',
 
-    /** Body font - Outfit for paragraphs, UI elements, buttons */
+    /** Body font - Outfit 400 for paragraphs, general text */
     body: 'font-body',
+
+    /** Display font - Space Grotesk 300 for hero sections, elegant large text */
+    display: 'font-heading font-light',
+
+    /** Subheading font - Space Grotesk 500 for H3-H6, card titles */
+    subheading: 'font-heading font-medium',
+
+    /** Brand font - Space Grotesk 700 for logos, strong branding */
+    brand: 'font-heading font-bold',
+
+    /** Emphasis font - Space Grotesk 600 for highlighted text (alias of heading) */
+    emphasis: 'font-heading font-semibold',
+
+    /** Button font - Outfit 600 for buttons, CTAs */
+    button: 'font-body font-semibold',
+
+    /** Navigation font - Outfit 500 for navigation links */
+    nav: 'font-body font-medium',
+
+    /** Label font - Outfit 500 for form labels, UI labels */
+    label: 'font-body font-medium',
+
+    /** Caption font - Outfit 300 for metadata, timestamps, small text */
+    caption: 'font-body font-light',
+
+    /** Code font - Outfit 400 with tight tracking for code snippets */
+    code: 'font-body tracking-tight',
   },
 };
 

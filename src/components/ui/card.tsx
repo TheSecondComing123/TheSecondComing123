@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn, theme } from "@/lib/theme"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -35,7 +35,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn(theme.font.subheading, "leading-none tracking-tight", className)}
     {...props}
   />
 ))
@@ -47,7 +47,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn(theme.font.caption, "text-sm text-muted-foreground", className)}
     {...props}
   />
 ))
