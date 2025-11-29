@@ -293,7 +293,7 @@ export default function GitHubContributions() {
                         <div
                           key={`${day.date}-${i}`}
                           className={cn(
-                            'aspect-square rounded-sm border transition-colors duration-150',
+                            'aspect-square rounded-sm border transition-all duration-200 hover:scale-110 hover:shadow-lg cursor-pointer',
                             getLevelColor(day.level),
                             theme.github.border
                           )}
@@ -305,7 +305,7 @@ export default function GitHubContributions() {
                   </div>
                 </div>
               </div>
-              
+
               <div className={cn("flex items-center justify-between text-sm ", theme.font.body, theme.text.muted)}>
                 <span className="text-yellow-400">
                   {isPlaying ? 'Game of Life Running...' : `${totalContributions.toLocaleString()} contributions in ${selectedYear}`}
@@ -329,13 +329,22 @@ export default function GitHubContributions() {
               </div>
             </>
           ) : (
-            <Alert variant="destructive" className="my-8">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>
-                Could not load contribution data. Please try again later.
-              </AlertDescription>
-            </Alert>
+            <div className={cn("rounded-xl p-8 md:p-12 text-center border", theme.bg.tertiary, theme.border.subtle)}>
+              <AlertCircle className={cn("h-12 w-12 mx-auto mb-4 opacity-50", theme.text.muted)} />
+              <h3 className={cn("text-lg font-semibold mb-2", theme.text.heading)}>
+                Unable to Load Contributions
+              </h3>
+              <p className={cn("mb-6", theme.text.muted)}>
+                It looks like there was an issue fetching your GitHub contribution data. Please try again later or refresh the page.
+              </p>
+              <Button
+                variant="outline"
+                onClick={() => window.location.reload()}
+                className="gap-2"
+              >
+                Try Again
+              </Button>
+            </div>
           )}
         </div>
       </Container>
