@@ -142,8 +142,9 @@ export default function Contact() {
         <motion.div
           className={cn(
             'max-w-2xl mx-auto rounded-2xl p-8 md:p-10 lg:p-12',
-            'border border-primary/20',
-            theme.bg.card
+            'border',
+            theme.bg.secondary,
+            theme.border.default
           )}
           variants={formContainerVariants}
           initial="hidden"
@@ -184,14 +185,7 @@ export default function Contact() {
                             )} />
                             <Input
                               placeholder="Your name"
-                              className={cn(
-                                'pl-10 h-11 rounded-lg',
-                                'border border-primary/20',
-                                theme.bg.control,
-                                theme.text.body,
-                                'transition-all duration-200',
-                                'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
-                              )}
+                              className="pl-10 h-11 rounded-lg"
                               {...field}
                             />
                           </div>
@@ -221,14 +215,7 @@ export default function Contact() {
                             <Input
                               type="email"
                               placeholder="your.email@example.com"
-                              className={cn(
-                                'pl-10 h-11 rounded-lg',
-                                'border border-primary/20',
-                                theme.bg.control,
-                                theme.text.body,
-                                'transition-all duration-200',
-                                'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
-                              )}
+                              className="pl-10 h-11 rounded-lg"
                               {...field}
                             />
                           </div>
@@ -270,14 +257,7 @@ export default function Contact() {
                           <Textarea
                             placeholder="Your message (at least 10 characters)..."
                             rows={5}
-                            className={cn(
-                              'pl-10 rounded-lg resize-none',
-                              'border border-primary/20',
-                              theme.bg.control,
-                              theme.text.body,
-                              'transition-all duration-200',
-                              'focus:border-primary/50 focus:ring-2 focus:ring-primary/20'
-                            )}
+                            className="pl-10 rounded-lg resize-none"
                             {...field}
                           />
                         </div>
@@ -305,8 +285,7 @@ export default function Contact() {
                   size="lg"
                   disabled={isSubmitting}
                   className={cn(
-                    'w-full gap-2 font-semibold rounded-lg h-11',
-                    'bg-primary hover:bg-primary/90 text-white',
+                    'w-full gap-2 rounded-lg h-11',
                     'transition-all duration-200',
                     'disabled:opacity-50 disabled:cursor-not-allowed',
                     isSubmitting && 'opacity-50'
