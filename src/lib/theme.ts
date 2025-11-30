@@ -26,40 +26,43 @@ export const theme = {
    * Background color variants
    */
   bg: {
-    /** Main page background - white in light mode, dark gray in dark mode */
-    page: 'bg-white dark:bg-[#16181d]',
+    /** Main page background - neutral-50 in light mode, neutral-950 in dark mode */
+    page: 'bg-neutral-50 dark:bg-neutral-950',
 
-    /** Card/section background - light gray in light mode, slightly lighter dark gray in dark mode */
-    card: 'bg-gray-50 dark:bg-[#24262e]',
+    /** Card/section background - green-100 in light mode, neutral-800 in dark mode */
+    card: 'bg-green-100 dark:bg-neutral-800',
 
     /** Secondary background (buttons, inputs, etc.) */
-    secondary: 'bg-gray-100 dark:bg-[#24262e]',
+    secondary: 'bg-neutral-100 dark:bg-neutral-800',
 
     /** Tertiary background for subtle UI elements */
-    tertiary: 'bg-gray-200 dark:bg-black/20',
+    tertiary: 'bg-neutral-200 dark:bg-black/20',
 
     /** Very subtle background with slight green tint in dark mode */
-    subtle: 'bg-gray-100 dark:bg-green-950/5',
+    subtle: 'bg-neutral-100 dark:bg-green-950/5',
 
     /** Input/control backgrounds */
-    control: 'bg-white dark:bg-[#1e2028]',
+    control: 'bg-neutral-100 dark:bg-neutral-900',
   },
 
   /**
    * Text color variants
    */
   text: {
-    /** Primary heading text - dark in light mode, white in dark mode */
-    heading: 'text-gray-900 dark:text-white',
+    /** Primary heading text - neutral-900 in light mode, white in dark mode */
+    heading: 'text-neutral-900 dark:text-white',
 
     /** Body/paragraph text */
-    body: 'text-gray-700 dark:text-gray-300',
+    body: 'text-neutral-700 dark:text-neutral-300',
 
     /** Secondary/muted text (labels, captions, etc.) */
-    muted: 'text-gray-600 dark:text-gray-400',
+    muted: 'text-neutral-600 dark:text-neutral-400',
 
     /** Even more subtle text */
-    subtle: 'text-gray-500 dark:text-gray-500',
+    subtle: 'text-neutral-500 dark:text-neutral-500',
+
+    /** Accent text - purple color for special highlights */
+    accent: 'text-purple-600 dark:text-purple-500',
   },
 
   /**
@@ -67,13 +70,16 @@ export const theme = {
    */
   border: {
     /** Standard border color */
-    default: 'border-gray-200 dark:border-gray-800',
+    default: 'border-neutral-200 dark:border-neutral-800',
 
     /** Subtle border with reduced opacity in dark mode */
-    subtle: 'border-gray-200 dark:border-gray-800/50',
+    subtle: 'border-neutral-200 dark:border-neutral-800/50',
 
     /** Input/control borders */
-    control: 'border-gray-300 dark:border-gray-700',
+    control: 'border-neutral-300 dark:border-neutral-700',
+
+    /** Accent border - purple color for special highlights */
+    accent: 'border-purple-600 dark:border-purple-500',
   },
 
   /**
@@ -81,33 +87,50 @@ export const theme = {
    */
   hover: {
     /** Hover text color change */
-    text: 'hover:text-gray-900 dark:hover:text-white',
+    text: 'hover:text-neutral-900 dark:hover:text-white',
 
     /** Hover background color change */
-    bg: 'hover:bg-gray-300 dark:hover:bg-white/10',
+    bg: 'hover:bg-neutral-300 dark:hover:bg-white/10',
+  },
+
+  /**
+   * Accent color variants - purple/magenta for strategic highlights (10% usage)
+   */
+  accent: {
+    /** Accent background - purple button/element backgrounds */
+    DEFAULT: 'bg-purple-600 dark:bg-purple-500',
+
+    /** Accent text color */
+    text: 'text-purple-600 dark:text-purple-500',
+
+    /** Accent border color */
+    border: 'border-purple-600 dark:border-purple-500',
+
+    /** Accent hover background */
+    hover: 'hover:bg-purple-700 dark:hover:bg-purple-400',
   },
 
   /**
    * GitHub contribution graph colors - theme-aware levels
    */
   github: {
-    /** No contributions - light gray in light mode, subtle dark green in dark mode */
-    level0: 'bg-gray-200 dark:bg-green-950/40',
+    /** No contributions - neutral-200 in light mode, subtle green-950 in dark mode */
+    level0: 'bg-neutral-200 dark:bg-green-950',
 
-    /** Few contributions - light green in light mode, darker green in dark mode */
+    /** Few contributions - green-200 in light mode, green-900 in dark mode */
     level1: 'bg-green-200 dark:bg-green-900',
 
-    /** Some contributions - medium-light green in light mode, medium green in dark mode */
+    /** Some contributions - green-400 in light mode, green-700 in dark mode */
     level2: 'bg-green-400 dark:bg-green-700',
 
-    /** Many contributions - medium green in light mode, brighter green in dark mode */
+    /** Many contributions - green-600 in light mode, green-500 in dark mode */
     level3: 'bg-green-600 dark:bg-green-500',
 
-    /** Most contributions - darker green in light mode, brightest green in dark mode */
+    /** Most contributions - green-700 in light mode, green-400 in dark mode (brightest) */
     level4: 'bg-green-700 dark:bg-green-400',
 
     /** Grid border color */
-    border: 'border-gray-300/50 dark:border-green-900/40',
+    border: 'border-neutral-300/50 dark:border-green-900/40',
   },
 
   /**
@@ -156,5 +179,6 @@ export type Theme = typeof theme;
 export type ThemeBg = keyof typeof theme.bg;
 export type ThemeText = keyof typeof theme.text;
 export type ThemeBorder = keyof typeof theme.border;
+export type ThemeAccent = keyof typeof theme.accent;
 export type ThemeGithub = keyof typeof theme.github;
 export type ThemeFont = keyof typeof theme.font;

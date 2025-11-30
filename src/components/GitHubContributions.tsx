@@ -174,7 +174,7 @@ export default function GitHubContributions() {
                         variant="ghost"
                         size="icon"
                         onClick={toggleGame}
-                        className={cn("h-8 w-8", isPlaying && "bg-green-600 text-white hover:bg-green-700")}
+                        className={cn("h-8 w-8", isPlaying && "bg-purple-600 dark:bg-purple-500 text-white dark:text-neutral-950 hover:bg-purple-700 dark:hover:bg-purple-400")}
                       >
                         {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                       </Button>
@@ -293,7 +293,7 @@ export default function GitHubContributions() {
                         <div
                           key={`${day.date}-${i}`}
                           className={cn(
-                            'aspect-square rounded-sm border transition-all duration-200 hover:scale-110 hover:shadow-lg cursor-pointer',
+                            'aspect-square rounded-sm border',
                             getLevelColor(day.level),
                             theme.github.border
                           )}
