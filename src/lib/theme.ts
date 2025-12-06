@@ -29,8 +29,8 @@ export const theme = {
     /** Main page background - neutral-50 in light mode, neutral-950 in dark mode */
     page: 'bg-neutral-50 dark:bg-neutral-950',
 
-    /** Card/section background - green-100 in light mode, neutral-800 in dark mode */
-    card: 'bg-green-100 dark:bg-neutral-800',
+    /** Card/section background - balanced: green-200 in light, neutral-900 in dark */
+    card: 'bg-green-200 dark:bg-neutral-900',
 
     /** Secondary background (buttons, inputs, etc.) */
     secondary: 'bg-neutral-100 dark:bg-neutral-800',

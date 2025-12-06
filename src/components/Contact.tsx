@@ -143,8 +143,8 @@ export default function Contact() {
           className={cn(
             'max-w-2xl mx-auto rounded-2xl p-8 md:p-10 lg:p-12',
             'border',
-            theme.bg.secondary,
-            theme.border.default
+            theme.bg.card,
+            theme.border.subtle
           )}
           variants={formContainerVariants}
           initial="hidden"

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { IconBox } from '@/components/ui/IconBox';
 import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/theme';
+import { cn, theme } from '@/lib/theme';
 import { cardVariants } from '@/constants/animations';
 import type { IconContainerSize } from '@/constants/ui';
 
@@ -51,7 +51,8 @@ export function ProjectCard({
     <Card
       className={cn(
         'h-full flex flex-col',
-        'border-gray-800/50',
+        theme.bg.card,
+        theme.border.subtle,
         'transition-colors duration-200',
         enableHover && 'hover:border-primary/30 group',
         className

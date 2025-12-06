@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero'
 import GitHubContributions from '@/components/GitHubContributions'
 import Competitions from '@/components/Competitions'
+import Technologies from '@/components/Technologies'
 import Contact from '@/components/Contact'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
@@ -23,6 +24,9 @@ export default function Home() {
           </ErrorBoundary>
         </AnimatedSection>
         <Competitions />
+        <AnimatedSection>
+          <Technologies />
+        </AnimatedSection>
         <AnimatedSection delay={0.2}>
           <Contact />
         </AnimatedSection>
