@@ -6,7 +6,7 @@ export { cn } from './utils';
 
 /**
  * Centralized theme utility containing semantic color patterns.
- * Each property contains the full Tailwind class string including dark mode variants.
+ * Dark-only palette for a consistent look across the site.
  *
  * Benefits:
  * - Single source of truth for theme colors
@@ -14,55 +14,52 @@ export { cn } from './utils';
  * - Reduces className verbosity by 50%
  * - TypeScript autocomplete support
  *
- * @example
- * // Before:
- * <div className="bg-white dark:bg-[#16181d] text-gray-900 dark:text-white">
- *
- * // After:
+ * // Usage:
+ * <div className={cn(theme.bg.page, theme.text.heading)}>
  * <div className={cn(theme.bg.page, theme.text.heading)}>
  */
 export const theme = {
   /**
    * Background color variants
    */
-  bg: {
-    /** Main page background - neutral-50 in light mode, neutral-950 in dark mode */
-    page: 'bg-neutral-50 dark:bg-neutral-950',
+    bg: {
+      /** Main page background */
+      page: 'bg-neutral-950',
 
-    /** Card/section background - balanced: green-200 in light, neutral-900 in dark */
-    card: 'bg-green-200 dark:bg-neutral-900',
+      /** Card/section background */
+      card: 'bg-neutral-900',
 
-    /** Secondary background (buttons, inputs, etc.) */
-    secondary: 'bg-neutral-100 dark:bg-neutral-800',
+      /** Secondary background (buttons, inputs, etc.) */
+      secondary: 'bg-neutral-800',
 
-    /** Tertiary background for subtle UI elements */
-    tertiary: 'bg-neutral-200 dark:bg-black/20',
+      /** Tertiary background for subtle UI elements */
+      tertiary: 'bg-black/20',
 
-    /** Very subtle background with slight green tint in dark mode */
-    subtle: 'bg-neutral-100 dark:bg-green-950/5',
+      /** Very subtle background with slight green tint */
+      subtle: 'bg-green-950/5',
 
-    /** Input/control backgrounds */
-    control: 'bg-neutral-100 dark:bg-neutral-900',
+      /** Input/control backgrounds */
+      control: 'bg-neutral-900',
   },
 
   /**
    * Text color variants
    */
   text: {
-    /** Primary heading text - neutral-900 in light mode, white in dark mode */
-    heading: 'text-neutral-900 dark:text-white',
+    /** Primary heading text */
+    heading: 'text-white',
 
     /** Body/paragraph text */
-    body: 'text-neutral-700 dark:text-neutral-300',
+    body: 'text-neutral-300',
 
     /** Secondary/muted text (labels, captions, etc.) */
-    muted: 'text-neutral-600 dark:text-neutral-400',
+    muted: 'text-neutral-400',
 
     /** Even more subtle text */
-    subtle: 'text-neutral-500 dark:text-neutral-500',
+    subtle: 'text-neutral-500',
 
-    /** Accent text - purple color for special highlights */
-    accent: 'text-purple-600 dark:text-purple-500',
+    /** Accent text - green color for special highlights */
+    accent: 'text-green-500',
   },
 
   /**
@@ -70,16 +67,16 @@ export const theme = {
    */
   border: {
     /** Standard border color */
-    default: 'border-neutral-200 dark:border-neutral-800',
+    default: 'border-neutral-800',
 
-    /** Subtle border with reduced opacity in dark mode */
-    subtle: 'border-neutral-200 dark:border-neutral-800/50',
+    /** Subtle border with reduced opacity */
+    subtle: 'border-neutral-800/50',
 
     /** Input/control borders */
-    control: 'border-neutral-300 dark:border-neutral-700',
+    control: 'border-neutral-700',
 
-    /** Accent border - purple color for special highlights */
-    accent: 'border-purple-600 dark:border-purple-500',
+    /** Accent border - green color for special highlights */
+    accent: 'border-green-500',
   },
 
   /**
@@ -87,50 +84,50 @@ export const theme = {
    */
   hover: {
     /** Hover text color change */
-    text: 'hover:text-neutral-900 dark:hover:text-white',
+    text: 'hover:text-white',
 
     /** Hover background color change */
-    bg: 'hover:bg-neutral-300 dark:hover:bg-white/10',
+    bg: 'hover:bg-white/10',
   },
 
   /**
-   * Accent color variants - purple/magenta for strategic highlights (10% usage)
+   * Accent color variants - green for strategic highlights (10% usage)
    */
   accent: {
-    /** Accent background - purple button/element backgrounds */
-    DEFAULT: 'bg-purple-600 dark:bg-purple-500',
+    /** Accent background - green button/element backgrounds */
+    DEFAULT: 'bg-green-600',
 
     /** Accent text color */
-    text: 'text-purple-600 dark:text-purple-500',
+    text: 'text-green-500',
 
     /** Accent border color */
-    border: 'border-purple-600 dark:border-purple-500',
+    border: 'border-green-500',
 
     /** Accent hover background */
-    hover: 'hover:bg-purple-700 dark:hover:bg-purple-400',
+    hover: 'hover:bg-green-500',
   },
 
   /**
    * GitHub contribution graph colors - theme-aware levels
    */
   github: {
-    /** No contributions - neutral-200 in light mode, subtle green-950 in dark mode */
-    level0: 'bg-neutral-200 dark:bg-green-950',
+    /** No contributions */
+    level0: 'bg-green-950',
 
-    /** Few contributions - green-200 in light mode, green-900 in dark mode */
-    level1: 'bg-green-200 dark:bg-green-900',
+    /** Few contributions */
+    level1: 'bg-green-900',
 
-    /** Some contributions - green-400 in light mode, green-700 in dark mode */
-    level2: 'bg-green-400 dark:bg-green-700',
+    /** Some contributions */
+    level2: 'bg-green-700',
 
-    /** Many contributions - green-600 in light mode, green-500 in dark mode */
-    level3: 'bg-green-600 dark:bg-green-500',
+    /** Many contributions */
+    level3: 'bg-green-500',
 
-    /** Most contributions - green-700 in light mode, green-400 in dark mode (brightest) */
-    level4: 'bg-green-700 dark:bg-green-400',
+    /** Most contributions (brightest) */
+    level4: 'bg-green-400',
 
     /** Grid border color */
-    border: 'border-neutral-300/50 dark:border-green-900/40',
+    border: 'border-green-900/40',
   },
 
   /**

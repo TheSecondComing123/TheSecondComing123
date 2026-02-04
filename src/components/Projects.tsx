@@ -28,7 +28,7 @@ export default function Projects() {
           ease: EASE_CURVE
         }}
       >
-        Over the years I&apos;ve made a lot of projects! I&apos;ve shared a few for you below.
+        A few projects I&apos;ve built.
       </motion.p>
 
       <motion.div
@@ -46,7 +46,7 @@ export default function Projects() {
             description={project.description}
             metadata={project.period}
             technologies={project.technologies}
-            href={`/projects/${project.id}`}
+            href={project.githubUrl}
           />
         ))}
       </motion.div>

@@ -16,7 +16,7 @@ const competitions = [
     rank: 'National Silver',
     icon: Award,
     period: '2024',
-    description: 'Achieved National Silver recognition in the American Computer Science League, competing against top high school students across the country in algorithmic problem-solving.',
+    description: 'National Silver recognition in the American Computer Science League.',
     url: 'https://www.acsl.org/'
   },
   {
@@ -25,7 +25,7 @@ const competitions = [
     rank: 'Silver Division',
     icon: Trophy,
     period: '2024',
-    description: 'Advanced to Silver Division in the USA Computing Olympiad, demonstrating proficiency in algorithms, data structures, and competitive programming techniques.',
+    description: 'Silver Division in the USA Computing Olympiad.',
     url: 'https://usaco.org/'
   },
   {
@@ -34,7 +34,7 @@ const competitions = [
     rank: '1st place solo',
     icon: Medal,
     period: '2024',
-    description: 'Secured 1st place in the Beginner Division of the Thomas Jefferson Invitational Olympiad in Informatics, showcasing strong problem-solving skills and coding ability.',
+    description: '1st place in the Beginner Division of the Thomas Jefferson Invitational Olympiad in Informatics.',
     url: 'https://activities.tjhsst.edu/tjioi/'
   },
   {
@@ -43,7 +43,7 @@ const competitions = [
     rank: '135th place',
     icon: CircleStar,
     period: '2025',
-    description: 'Ranked 135th in the California Informatics Olympiad, competing among hundreds of participants in challenging algorithmic contests.',
+    description: '135th place in the California Informatics Olympiad.',
     url: 'https://calico.cs.berkeley.edu/'
   }
 ]

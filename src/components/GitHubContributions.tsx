@@ -6,11 +6,9 @@ import { GITHUB_YEARS, GITHUB_CONFIG, GAME_OF_LIFE } from '@/constants/github'
 import { Play, Pause, RotateCcw, AlertCircle } from 'lucide-react'
 import { cn, theme } from '@/lib/theme'
 import { Container } from '@/components/ui/Container'
-import { Skeleton } from '@/components/ui/skeleton'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 const getLevelColor = (level: number): string => {
   switch (level) {
@@ -174,7 +172,7 @@ export default function GitHubContributions() {
                         variant="ghost"
                         size="icon"
                         onClick={toggleGame}
-                        className={cn("h-8 w-8", isPlaying && "bg-purple-600 dark:bg-purple-500 text-white dark:text-neutral-950 hover:bg-purple-700 dark:hover:bg-purple-400")}
+                        className={cn("h-8 w-8", isPlaying && "bg-green-600 text-neutral-950 hover:bg-green-500")}
                       >
                         {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                       </Button>
@@ -215,46 +213,8 @@ export default function GitHubContributions() {
           </div>
           
           {isLoading ? (
-            <div className="mb-4">
-              <div className="flex gap-3">
-                {/* Skeleton day labels */}
-                <div className="grid grid-rows-7 gap-1 pt-5">
-                  <Skeleton className="h-3 w-8" />
-                  <div></div>
-                  <Skeleton className="h-3 w-8" />
-                  <div></div>
-                  <Skeleton className="h-3 w-8" />
-                  <div></div>
-                  <div></div>
-                </div>
-
-                {/* Skeleton contribution grid */}
-                <div className="flex-1">
-                  <div className="h-4 mb-1">
-                    <div className="flex gap-4">
-                      {Array.from({ length: 12 }).map((_, i) => (
-                        <Skeleton key={i} className="h-3 w-12" />
-                      ))}
-                    </div>
-                  </div>
-                  <div className="grid grid-rows-7 grid-flow-col gap-1">
-                    {Array.from({ length: 7 * 52 }).map((_, i) => (
-                      <Skeleton key={i} className="w-2.5 h-2.5 rounded-sm" />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Skeleton legend */}
-              <div className="flex items-center justify-end gap-2 mt-2">
-                <Skeleton className="h-3 w-8" />
-                <div className="flex gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Skeleton key={i} className="w-2.5 h-2.5 rounded-sm" />
-                  ))}
-                </div>
-                <Skeleton className="h-3 w-8" />
-              </div>
+            <div className="py-24 text-center">
+              <p className={cn("text-sm", theme.text.muted)}>Loading...</p>
             </div>
           ) : displayData.length > 0 ? (
             <>
@@ -293,7 +253,7 @@ export default function GitHubContributions() {
                         <div
                           key={`${day.date}-${i}`}
                           className={cn(
-                            'aspect-square rounded-sm border',
+                            'aspect-square border',
                             getLevelColor(day.level),
                             theme.github.border
                           )}
@@ -312,12 +272,12 @@ export default function GitHubContributions() {
                 </span>
                 <div className="flex items-center gap-2">
                   <span>Less</span>
-                  <div className="flex gap-1">
+                      <div className="flex gap-1">
                     {[0, 1, 2, 3, 4].map((level) => (
                       <div
                         key={level}
                         className={cn(
-                          'w-3 h-3 rounded-sm border',
+                              'w-3 h-3 border',
                           getLevelColor(level),
                           theme.github.border
                         )}

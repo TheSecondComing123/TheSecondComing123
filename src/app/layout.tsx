@@ -89,7 +89,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body className={cn(spaceGrotesk.variable, outfit.variable, theme.bg.page)}>
         {children}
         <Toaster />

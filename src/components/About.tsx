@@ -1,81 +1,102 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { Code, Palette, Trophy, Gamepad2, Bot, Rocket, Sparkles, Terminal, Globe, Cpu } from 'lucide-react';
-import { containerVariants, itemVariants } from '@/constants/animations';
-import { ANIMATION_DURATION, ANIMATION_DELAY, ANIMATION_OFFSET, VIEWPORT_CONFIG } from '@/constants/animation-values';
-import { EASE_CURVE } from '@/constants/animations';
-import { GRID_LAYOUTS } from '@/constants/layout';
-import { ICON_SIZE } from '@/constants/ui';
-import { cn, theme } from '@/lib/theme';
-import { Container } from '@/components/ui/Container';
-import { AnimatedHeading } from '@/components/ui/AnimatedHeading';
-import { ProjectCard } from '@/components/ui/ProjectCard';
-import { Button } from '@/components/ui/button';
+import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  Code,
+  Palette,
+  Trophy,
+  Gamepad2,
+  Bot,
+  Rocket,
+  Sparkles,
+  Terminal,
+  Globe,
+  Cpu,
+} from "lucide-react";
+import { containerVariants, itemVariants } from "@/constants/animations";
+import {
+  ANIMATION_DURATION,
+  ANIMATION_DELAY,
+  ANIMATION_OFFSET,
+  VIEWPORT_CONFIG,
+} from "@/constants/animation-values";
+import { EASE_CURVE } from "@/constants/animations";
+import { GRID_LAYOUTS } from "@/constants/layout";
+import { ICON_SIZE } from "@/constants/ui";
+import { cn, theme } from "@/lib/theme";
+import { Container } from "@/components/ui/Container";
+import { AnimatedHeading } from "@/components/ui/AnimatedHeading";
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { Button } from "@/components/ui/button";
 
 const skills = [
   {
-    id: 'python',
-    name: 'Python',
-    description: 'Competitive programming, robotics, automation',
+    id: "python",
+    name: "Python",
+    description: "Competitive programming, robotics, automation",
     icon: Code,
   },
   {
-    id: 'code-golfing',
-    name: 'Code Golfing',
-    description: 'Code Golf Stack Exchange, assisting in development of Vyxal golfing language',
+    id: "code-golfing",
+    name: "Code Golfing",
+    description:
+      "Code Golf Stack Exchange, assisting in development of Vyxal golfing language",
     icon: Terminal,
   },
   {
-    id: 'cpp',
-    name: 'C++',
-    description: 'Competitive programming, algorithms, data structures',
+    id: "cpp",
+    name: "C++",
+    description: "Competitive programming, algorithms, data structures",
     icon: Cpu,
   },
   {
-    id: 'web',
-    name: 'Web Development',
-    description: 'Next.js, React, Tailwind CSS, modern frameworks',
+    id: "web",
+    name: "Web Development",
+    description: "Next.js, React, Tailwind CSS, modern frameworks",
     icon: Globe,
   },
   {
-    id: 'game-dev',
-    name: 'Game Development',
-    description: 'GDScript, Godot Engine, hosted on Wechat Mini Games',
+    id: "game-dev",
+    name: "Game Development",
+    description: "GDScript, Godot Engine, hosted on Wechat Mini Games",
     icon: Gamepad2,
   },
   {
-    id: 'robotics',
-    name: 'Robotics',
-    description: 'Pybricks, FLL, object-oriented design',
+    id: "robotics",
+    name: "Robotics",
+    description: "Pybricks, FLL, object-oriented design",
     icon: Bot,
   },
 ];
 
 const interests = [
   {
-    id: 'competitive-programming',
-    title: 'Competitive Programming',
-    description: 'I love solving algorithmic challenges and competing in contests like USACO and Codeforces. There\'s something satisfying about finding elegant solutions to complex problems.',
+    id: "competitive-programming",
+    title: "Competitive Programming",
+    description:
+      "Solving algorithmic challenges and competing in contests like USACO and Codeforces.",
     icon: Trophy,
   },
   {
-    id: 'web-development',
-    title: 'Web Development',
-    description: 'Building interactive websites and applications is my passion. I enjoy creating smooth user experiences with modern frameworks and animations.',
+    id: "web-development",
+    title: "Web Development",
+    description:
+      "Building interactive websites and applications with modern frameworks.",
     icon: Rocket,
   },
   {
-    id: 'game-creation',
-    title: 'Game Creation',
-    description: 'I\'ve been making games since I was young, including my 2121 game that won 2nd place in a national game jam. I love bringing ideas to life through code.',
+    id: "game-creation",
+    title: "Game Creation",
+    description:
+      "Making games since I was young. My 2121 game won 2nd place in a national game jam.",
     icon: Gamepad2,
   },
   {
-    id: 'creative-coding',
-    title: 'Creative Coding',
-    description: 'From interactive GitHub contribution visualizations to experimental projects, I enjoy blending creativity with programming.',
+    id: "creative-coding",
+    title: "Creative Coding",
+    description:
+      "Interactive GitHub contribution visualizations and experimental projects.",
     icon: Sparkles,
   },
 ];
@@ -85,23 +106,39 @@ export default function About() {
     <Container>
       {/* Hero Section */}
       <section className="py-16 md:py-20 lg:py-24">
-        <AnimatedHeading as="h1" className="text-5xl md:text-7xl font-bold mb-8" delay={ANIMATION_DELAY.SHORT}>
+        <AnimatedHeading
+          as="h1"
+          className="text-5xl md:text-7xl font-bold mb-8"
+          delay={ANIMATION_DELAY.SHORT}
+        >
           About Me
         </AnimatedHeading>
         <motion.div
-          className={cn('text-lg space-y-4 max-w-3xl', theme.font.body, theme.text.body)}
+          className={cn(
+            "text-lg space-y-4 max-w-3xl",
+            theme.font.body,
+            theme.text.body,
+          )}
           initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: ANIMATION_DURATION.SLOW, delay: ANIMATION_DELAY.MEDIUM, ease: EASE_CURVE }}
+          transition={{
+            duration: ANIMATION_DURATION.SLOW,
+            delay: ANIMATION_DELAY.MEDIUM,
+            ease: EASE_CURVE,
+          }}
         >
           <p>
-            Hi! I&apos;m <span className="text-primary font-semibold">Alan Bagel</span>, a competitive programmer and full-stack developer who loves building things with code.
+            Hi! I&apos;m{" "}
+            <span className="text-primary font-semibold">Alan Bagel</span>, a
+            competitive programmer and full-stack developer.
           </p>
           <p>
-            I enjoy tackling algorithmic challenges in competitive programming contests and creating interactive web experiences. Whether it&apos;s optimizing a graph traversal algorithm or designing a smooth user interface, I&apos;m passionate about writing clean, efficient code.
+            I do competitive programming contests and build web applications. I
+            write algorithms and design interfaces.
           </p>
           <p>
-            When I&apos;m not coding, you&apos;ll find me exploring new technologies, working on robotics projects, or creating games. I believe in learning by building, and I&apos;m always working on something new.
+            When I&apos;m not coding, I work on robotics projects and create
+            games.
           </p>
         </motion.div>
       </section>
@@ -137,13 +174,17 @@ export default function About() {
           Competitive Programming Journey
         </AnimatedHeading>
         <motion.p
-          className={cn('text-lg mb-12 max-w-3xl', theme.text.body)}
+          className={cn("text-lg mb-12 max-w-3xl", theme.text.body)}
           initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={VIEWPORT_CONFIG.DEFAULT}
-          transition={{ duration: ANIMATION_DURATION.SLOW, delay: ANIMATION_DELAY.SHORT, ease: EASE_CURVE }}
+          transition={{
+            duration: ANIMATION_DURATION.SLOW,
+            delay: ANIMATION_DELAY.SHORT,
+            ease: EASE_CURVE,
+          }}
         >
-          Competitive programming has been a huge part of my development journey. I&apos;ve competed in various contests and earned recognition at the national level:
+          Contest results and achievements:
         </motion.p>
         <motion.div
           className="relative max-w-4xl mx-auto"
@@ -164,16 +205,44 @@ export default function About() {
             >
               {/* Left content */}
               <div className="md:text-right">
-                <div className={cn("rounded-xl p-6 inline-block w-full", theme.bg.card, theme.border.subtle)}>
+                <div
+                  className={cn(
+                    "rounded-xl p-6 inline-block w-full",
+                    theme.bg.card,
+                    theme.border.subtle,
+                  )}
+                >
                   <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
                     <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Trophy className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>ACSL National Silver</h3>
-                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024</p>
-                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
-                        Earned National Silver ranking in the American Computer Science League, competing against top high school students across the country.
+                      <h3
+                        className={cn(
+                          "text-xl font-semibold  mb-1",
+                          theme.font.heading,
+                          theme.text.heading,
+                        )}
+                      >
+                        ACSL National Silver
+                      </h3>
+                      <p
+                        className={cn(
+                          "text-primary text-sm font-medium mb-2",
+                          theme.font.body,
+                        )}
+                      >
+                        2024
+                      </p>
+                      <p
+                        className={cn(
+                          " text-sm",
+                          theme.font.body,
+                          theme.text.muted,
+                        )}
+                      >
+                        National Silver ranking in the American Computer Science
+                        League.
                       </p>
                     </div>
                   </div>
@@ -200,16 +269,43 @@ export default function About() {
               </div>
               {/* Right content */}
               <div>
-                <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
+                <div
+                  className={cn(
+                    "rounded-xl p-6",
+                    theme.bg.card,
+                    theme.border.subtle,
+                  )}
+                >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Code className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>USACO Silver Division</h3>
-                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024</p>
-                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
-                        Achieved Silver Division status in the USA Computing Olympiad through strong algorithmic problem-solving and efficient code implementation.
+                      <h3
+                        className={cn(
+                          "text-xl font-semibold  mb-1",
+                          theme.font.heading,
+                          theme.text.heading,
+                        )}
+                      >
+                        USACO Silver Division
+                      </h3>
+                      <p
+                        className={cn(
+                          "text-primary text-sm font-medium mb-2",
+                          theme.font.body,
+                        )}
+                      >
+                        2024
+                      </p>
+                      <p
+                        className={cn(
+                          " text-sm",
+                          theme.font.body,
+                          theme.text.muted,
+                        )}
+                      >
+                        Silver Division in the USA Computing Olympiad.
                       </p>
                     </div>
                   </div>
@@ -224,16 +320,44 @@ export default function About() {
             >
               {/* Left content */}
               <div className="md:text-right">
-                <div className={cn("rounded-xl p-6 inline-block w-full", theme.bg.card, theme.border.subtle)}>
+                <div
+                  className={cn(
+                    "rounded-xl p-6 inline-block w-full",
+                    theme.bg.card,
+                    theme.border.subtle,
+                  )}
+                >
                   <div className="flex items-start gap-4 md:flex-row-reverse md:text-left">
                     <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Sparkles className="text-primary" size={24} />
                     </div>
                     <div className="flex-1">
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>TJIOI 1st Place Solo</h3>
-                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2024 - Beginner Division</p>
-                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
-                        Won first place competing solo in the Thomas Jefferson Invitational Olympiad in Informatics, demonstrating strong individual problem-solving skills.
+                      <h3
+                        className={cn(
+                          "text-xl font-semibold  mb-1",
+                          theme.font.heading,
+                          theme.text.heading,
+                        )}
+                      >
+                        TJIOI 1st Place Solo
+                      </h3>
+                      <p
+                        className={cn(
+                          "text-primary text-sm font-medium mb-2",
+                          theme.font.body,
+                        )}
+                      >
+                        2024 - Beginner Division
+                      </p>
+                      <p
+                        className={cn(
+                          " text-sm",
+                          theme.font.body,
+                          theme.text.muted,
+                        )}
+                      >
+                        First place solo in the Thomas Jefferson Invitational
+                        Olympiad in Informatics.
                       </p>
                     </div>
                   </div>
@@ -260,81 +384,49 @@ export default function About() {
               </div>
               {/* Right content */}
               <div>
-                <div className={cn("rounded-xl p-6", theme.bg.card, theme.border.subtle)}>
+                <div
+                  className={cn(
+                    "rounded-xl p-6",
+                    theme.bg.card,
+                    theme.border.subtle,
+                  )}
+                >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-linear-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center border border-primary/20 shrink-0">
                       <Cpu className="text-primary" size={24} />
                     </div>
                     <div>
-                      <h3 className={cn("text-xl font-semibold  mb-1", theme.font.heading, theme.text.heading)}>CalICO 135th Place</h3>
-                      <p className={cn("text-primary text-sm font-medium mb-2", theme.font.body)}>2025</p>
-                      <p className={cn(" text-sm", theme.font.body, theme.text.muted)}>
-                        Competed in the California Informatics Olympiad among hundreds of talented participants from across the state.
+                      <h3
+                        className={cn(
+                          "text-xl font-semibold  mb-1",
+                          theme.font.heading,
+                          theme.text.heading,
+                        )}
+                      >
+                        CalICO 135th Place
+                      </h3>
+                      <p
+                        className={cn(
+                          "text-primary text-sm font-medium mb-2",
+                          theme.font.body,
+                        )}
+                      >
+                        2025
+                      </p>
+                      <p
+                        className={cn(
+                          " text-sm",
+                          theme.font.body,
+                          theme.text.muted,
+                        )}
+                      >
+                        135th place in the California Informatics Olympiad.
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Interests Section */}
-      <section className="py-16 md:py-20 lg:py-24">
-        <AnimatedHeading as="h2" scroll className="text-4xl font-bold mb-12">
-          What I Love Doing
-        </AnimatedHeading>
-        <motion.div
-          className={GRID_LAYOUTS.TWO_COLUMN_RESPONSIVE}
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT_CONFIG.SMALL_AMOUNT}
-        >
-          {interests.map((interest) => (
-            <ProjectCard
-              key={interest.id}
-              icon={<interest.icon className="text-primary" size={ICON_SIZE.MD} />}
-              iconSize="MD"
-              title={interest.title}
-              description={interest.description}
-              enableHover={false}
-            />
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="py-16 md:py-20 lg:py-24">
-        <motion.div
-          className="bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl p-12 border border-primary/20 text-center"
-          initial={{ opacity: 0, y: ANIMATION_OFFSET.Y_LARGE }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={VIEWPORT_CONFIG.DEFAULT}
-          transition={{ duration: ANIMATION_DURATION.SLOW, ease: EASE_CURVE }}
-        >
-          <h2 className={cn("text-3xl md:text-4xl font-bold  mb-4", theme.font.heading, theme.text.heading)}>
-            Want to see what I&apos;ve built?
-          </h2>
-          <p className={cn("text-lg mb-8 max-w-2xl mx-auto", theme.font.body, theme.text.body)}>
-            Check out my projects to see some of the things I&apos;ve created, or visit my GitHub to explore my code.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" aria-label="View my projects">
-              <Link href="/projects">
-                View Projects
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" aria-label="Visit my GitHub profile">
-              <a
-                href="https://github.com/TheSecondComing123"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Visit GitHub
-              </a>
-            </Button>
           </div>
         </motion.div>
       </section>

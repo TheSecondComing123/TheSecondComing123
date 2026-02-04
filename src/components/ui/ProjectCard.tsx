@@ -83,7 +83,7 @@ export function ProjectCard({
             {description}
           </CardDescription>
           {technologies && technologies.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-3">
               {technologies.map((tech) => (
                 <Badge key={tech} variant="secondary">
                   {tech}

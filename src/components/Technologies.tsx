@@ -24,7 +24,7 @@ import { Card } from '@/components/ui/card';
 
 const technologies = [
   { name: 'React', icon: SiReact, color: 'text-[#61DAFB]' },
-  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
+  { name: 'Next.js', icon: SiNextdotjs, color: 'text-white' },
   { name: 'TypeScript', icon: SiTypescript, color: 'text-[#3178C6]' },
   { name: 'Tailwind CSS', icon: SiTailwindcss, color: 'text-[#06B6D4]' },
   { name: 'Node.js', icon: SiNodedotjs, color: 'text-[#339933]' },
